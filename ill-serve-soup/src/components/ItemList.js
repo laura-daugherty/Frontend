@@ -1,76 +1,45 @@
 import React from "react";
 import { connect } from "react-redux";
-import Loader from "react-loader-spinner";
-import { Form, Input, Button } from "reactstrap";
-import { TweenLite, Power1 } from "gsap";
 
-import { fetchFriends, addFriend } from "./actions/actions";
+//Needed Component Imports
+import Item from "./Item"
 
-class Friends extends React.Component {
-  state = {
-    name: "",
-    email: "",
-    picture: ""
-  };
+// Needed Action Imports
+import { fetchingItems } from "../actions";
+
+class ItemList extends React.Component {
+
   render() {
     return (
-      <div className="friends-wrapper">
+      <div className="items-wrapper">
         {this.props.loading ? (
           <div className="loader">
-            <Loader type="Grid" color="#fb553b" height={200} width={200} />
+            Loading...
           </div>
         ) : (
           <>
-            {this.props.friends.map(friend => (
-              <div className="card">
-                <img
-                  className="friend-image"
-                  src={friend.image}
-                  alt="Card image cap"
-                />
-                <div className="card-body">
-                  <h1>{friend.name}</h1>
-                  <h3>{friend.email}</h3>
-                </div>
-              </div>
+            {this.props.items.map(item => (
+              <Item item={item} />
             ))}
-            
           </>
         )}
       </div>
     );
   }
+  
   componentDidMount() {
-    this.props.fetchFriends();
+    this.props.fetchingItems();
   }
-
-  handleChanges = e => {
-    e.preventDefault();
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  addFriend = e => {
-    e.preventDefault();
-    const newFriend = {
-      name: this.state.name,
-      email: this.state.email,
-      picture: this.state.picture
-    };
-    this.props.addFriend(newFriend);
-  };
 }
 
 const mapStateToProps = state => ({
-  friends: state.friends,
+  items: state.items,
   loading: state.loading
 });
 
 export default connect(
   mapStateToProps,
   {
-    fetchFriends,
-    addFriend
+    fetchingItems,
   }
-)(Friends);
+)(ItemList);
