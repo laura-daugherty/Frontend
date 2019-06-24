@@ -1,22 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addItem } from "../actions";
+import { updateItem } from "../actions";
 
-class ItemForm extends React.Component {
+//Really not sure about this one - I copied over the ItemForm and udpated it how I think it should be
+
+class UpdateItemForm extends React.Component {
   state = {
-    name: '',
-    quantity: '',
-    unit: '',
-    threshold: '',
-    category: ''
+    //How do we get the UpdateItemForm state to persist from previous State??
+    name: this.state.name,
+    quantity: this.state.quantity,
+    unit: this.state.unit,
+    threshold: this.state.threshold,
+    category: this.state.category
   };
   render() {
     return (
       <form className="item-form">
         <div>
           <input
-            placeholder="Item Name"
+          //Is this how I get placeholder to say what the name of currently selected item is?
+            placeholder={this.state.name}
             name="name"
             value={this.state.name}
             onChange={this.handleChanges}
@@ -24,7 +28,7 @@ class ItemForm extends React.Component {
         </div>
         <div>
           <input
-            placeholder="Item Category"
+            placeholder={this.state.category}
             name="category"
             value={this.state.category}
             onChange={this.handleChanges}
@@ -32,7 +36,7 @@ class ItemForm extends React.Component {
         </div>
         <div>
           <input
-            placeholder="Item Quantity"
+            placeholder={this.state.quantity}
             name="quantity"
             value={this.state.quantity}
             onChange={this.handleChanges}
@@ -40,7 +44,7 @@ class ItemForm extends React.Component {
         </div>
         <div>
           <input
-            placeholder="Item Unit"
+            placeholder={this.state.unit}
             name="unit"
             value={this.state.unit}
             onChange={this.handleChanges}
@@ -48,16 +52,16 @@ class ItemForm extends React.Component {
         </div>
         <div>
           <input
-            placeholder="Low Stock Threshold"
+            placeholder={this.state.threshold}
             name="threshold"
             value={this.state.threshold}
             onChange={this.handleChanges}
           />
         </div>
         <div>
-          <div onClick={this.addItem}>
-            <h3>Add Your Item</h3>
-          </div>
+          <button onClick={this.updateItem}>
+            <h3>Update Your Item</h3>
+          </button>
         </div>
       </form>
     )
@@ -70,16 +74,16 @@ class ItemForm extends React.Component {
     });
   };
 
-  addItem = e => {
+  updateItem = e => {
     e.preventDefault();
-    const newItem = {
+    const updatedItem = {
       name: this.state.name,
       quantity: this.state.quantity,
       unit: this.state.unit,
       threshold: this.state.threshold,
       category: this.state.category
     };
-    this.props.addItem(newItem);
+    this.props.updateItem(updatedItem);
   };
 }
 
@@ -90,6 +94,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    addItem
+    updateItem
   }
-)(ItemForm);
+)(UpdateItemForm);

@@ -1,9 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Login from "./components/Login";
 
+// Components
+import Login from "./components/Login";
+import ItemList from "./components/ItemList";
+import ItemForm from './components/ItemForm';
+import UpdateItemForm from './components/UpdateItemForm'
 // import PrivateRoute from './components/PrivateRoute';
+
+//Style Stuff
 import './App.scss';
 
 class App extends React.Component {
@@ -13,20 +19,31 @@ class App extends React.Component {
       <div className="App">
         <nav>
           <div>LOGO</div>
-          <div>LogOut</div>
         </nav>
+
+        <div className="notification-banner">
+          {/* Display <Notification> element here */}
+          This stuff is Low
+        </div>
+
+        <div className="sidebar">
+          {/* Display <Sidebar> element here */}
+        </div>
+
         <Link to="/login">Login</Link>
-        <Link to="/Register">Register</Link>
-        {/* <Route exact path="/login" component={Register} /> */}
+        <Link to="/register">Register</Link>
+
+        {/* //Routes// */}
+
+        <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/itemList" component={ItemList} />
+        <Route exact path="/ItemForm" component={ItemForm} />
+        <Route exact path="/updateItemForm" component={UpdateItemForm} />
+
       </div>
     );
   }
 }
 
-
-const mapStateToProps = (state) => ({
-
-})
-
-export default connect(mapStateToProps, { })(App);
+export default App
