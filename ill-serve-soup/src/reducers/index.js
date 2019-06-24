@@ -5,6 +5,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT,
   FETCH_ITEMS_START,
   FETCH_ITEMS_SUCCESS,
   FETCH_ITEMS_FAILURE,
@@ -21,8 +22,7 @@ import {
 } from "../actions"
 
 const initialState = {
-  userId: null,
-  kitchens: [],   
+  userId: null,  
   items: [],
   loggingIn: false,
   isLoggedIn: false,
@@ -54,6 +54,19 @@ export const reducer = (state = initialState, action) => {
         ...state,
         loggingIn: false,
         error: action.payload
+      }
+    case LOGOUT: 
+      return {
+        userId: null,
+        items: [],
+        loggingIn: false,
+        isLoggedIn: false,
+        registering: false,
+        error: null,
+        fetchingItems: false,
+        deletingItem: false,
+        addingItem: false,
+        updatingItem: false,
       }
     case REGISTER_START:
       return {

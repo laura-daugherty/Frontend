@@ -27,6 +27,14 @@ export const login = (credentials) => (dispatch) => {
     })
 }
 
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => {
+  return ({
+    type: LOGOUT
+  })
+}
+
 export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
@@ -40,7 +48,6 @@ export const register = (credentials) => (dispatch) => {
       console.log('registering success: ', response)
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: response.data.
       })
       localStorage.setItem('token', response.data.payload)
     })
@@ -62,6 +69,7 @@ export const fetchItems = () => (dispatch) => {
     type: FETCH_ITEMS_START
   })
   axiosWithAuth().get(/*URL*/)
+     //is there anyway to get only the items associated with the particular username?
     .then(response => {
       console.log('fetching data success: ', response);
       dispatch({
