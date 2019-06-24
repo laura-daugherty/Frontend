@@ -14,9 +14,10 @@ export const login = (credentials) => (dispatch) => {
       console.log('login success: ', response)
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: /* response.data.id  set to equal to user ID*/
+        payload: credentials.username
       })
       localStorage.setItem('token', /*response.data.payload  */)
+      localStorage.setItem('username', credentials.username)
     })
     .catch(error => {
       console.log('login error: ', error);
@@ -48,8 +49,10 @@ export const register = (credentials) => (dispatch) => {
       console.log('registering success: ', response)
       dispatch({
         type: REGISTER_SUCCESS,
+        payload: credentials.username
       })
-      localStorage.setItem('token', response.data.payload)
+      localStorage.setItem('token', /*response.data.payload  */)
+      localStorage.setItem('username', credentials.username)
     })
     .catch(error => {
       console.log('registering error: ', error);

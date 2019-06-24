@@ -23,6 +23,7 @@ import {
 
 const initialState = {
   userId: null,  
+  username: '',
   items: [],
   loggingIn: false,
   isLoggedIn: false,
@@ -47,7 +48,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         loggingIn: false,
         isLoggedIn: true,
-        userId: action.payload
+        username: action.payload
       }
     case LOGIN_FAILURE:
       return {
@@ -57,7 +58,8 @@ export const reducer = (state = initialState, action) => {
       }
     case LOGOUT: 
       return {
-        userId: null,
+        userId: null,  
+        username: '',
         items: [],
         loggingIn: false,
         isLoggedIn: false,
@@ -79,7 +81,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         registering: false,
         isLoggedIn: true,
-        kitchens: action.payload  
+        username: action.payload
       }
     case REGISTER_FAILURE:
       return {
@@ -97,7 +99,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingItems: false,
-        items: action.payload
+        items: action.payload.filter(item => item.username === state.username)[0].items
       }
     case FETCH_ITEMS_FAILURE:
       return {
@@ -115,7 +117,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         addingItem: false,
-        items: action.payload
+        items: action.payload.filter(item => item.username === state.username)[0].items
       }
     case ADD_ITEM_FAILURE:
       return {
@@ -133,7 +135,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         updatingItem: false,
-        items: action.payload
+        items: action.payload.filter(item => item.username === state.username)[0].items
       }
     case UPDATE_ITEM_FAILURE:
       return {
@@ -151,7 +153,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         deletingItem: false,
-        items: action.payload
+        items: action.payload.filter(item => item.username === state.username)[0].items
       }
     case DELETE_ITEM_FAILURE:
       return {
