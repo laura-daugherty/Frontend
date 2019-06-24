@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from "./components/Login";
 
@@ -12,14 +12,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <nav>
-          <image>LOGO</image>
-          <NavLink>LogOut</NavLink>
+          <div>LOGO</div>
+          <div>LogOut</div>
         </nav>
-        <Route exact path="/" component={Login} />
+        <Link to="/login">Login</Link>
+        <Link to="/Register">Register</Link>
+        {/* <Route exact path="/login" component={Register} /> */}
+        <Route exact path="/login" component={Login} />
       </div>
     );
   }
 }
+
 
 const mapStateToProps = (state) => ({
 

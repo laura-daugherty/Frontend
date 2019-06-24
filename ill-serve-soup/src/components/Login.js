@@ -21,9 +21,6 @@ class Login extends React.Component {
               name="username"
               value={this.state.creds.username}
               onChange={this.handleChanges}
-              className={
-                this.props.error === true ? "error login-input" : "login-input"
-              }
               required
             />
           </div>
@@ -34,11 +31,16 @@ class Login extends React.Component {
               name="password"
               value={this.state.creds.password}
               onChange={this.handleChanges}
-              // className={
-              //   this.props.error === true ? "error login-input" : "login-input"
-              // }
               required
             />
+            {
+                this.props.error ?  
+                <div>
+                  NO GOOD
+                </div>
+                :
+                <div></div>
+              }
           </div>
           <div>
             <div className="login-button" onClick={this.login}>
@@ -62,14 +64,17 @@ class Login extends React.Component {
 
 componentDidMount() {
   if (this.props.token) {
-    this.props.history.push("/");
+    this.props.history.push("/login");
   }
 }
 
 handleChanges = e => {
   e.preventDefault();
   this.setState({
-    [e.target.name]: e.target.value
+    creds: {
+      ...this.state.creds,
+      [e.target.name]: e.target.value
+    }
   });
 };
 
@@ -80,7 +85,7 @@ login = () => {
       password: this.state.password
     })
     .then(() => {
-      this.props.history.push("/");
+      this.props.history.push("/home");
     });
 };
 }
