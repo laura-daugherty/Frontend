@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addItem } from "../actions";
+import { addItem, updateItem } from "../actions";
 
 class ItemForm extends React.Component {
   state = {
@@ -58,6 +58,9 @@ class ItemForm extends React.Component {
           <div onClick={this.addItem}>
             <h3>Add Your Item</h3>
           </div>
+          <div onClick={this.updateItem}>
+            <h3>Update Your Item</h3>
+          </div>
         </div>
       </form>
     )
@@ -67,6 +70,8 @@ class ItemForm extends React.Component {
     e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
+
+      //Parse to number if Num value
     });
   };
 
@@ -83,6 +88,8 @@ class ItemForm extends React.Component {
   };
 }
 
+//UPDATE ITEM EVENT GOES HERE
+
 const mapStateToProps = state => ({
   items: state.items,
 });
@@ -90,6 +97,7 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    addItem
+    addItem,
+    updateItem
   }
 )(ItemForm);
