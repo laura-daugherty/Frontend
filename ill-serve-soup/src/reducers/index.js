@@ -81,7 +81,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         registering: false,
         isLoggedIn: true,
-        username: action.payload
       }
     case REGISTER_FAILURE:
       return {

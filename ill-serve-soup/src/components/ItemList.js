@@ -30,7 +30,8 @@ class ItemList extends React.Component {
 
       <div className="items-wrapper">
         {this.props.loading & <div className="loader">Loading...</div>}
-        {this.props.items.map(item => <Item item={item} key={item.itemid}/>)}
+        {this.props.items.length === 0 && <div>No item in the inventory</div>}
+        {this.props.items.length > 0 && this.props.items.map(item => <Item item={item} key={item.itemid}/>)}
       </div>
       </div>
 
@@ -39,14 +40,16 @@ class ItemList extends React.Component {
 
   componentDidMount() {
     // console.log("CDM", this.props)
-    this.props.fetchItems();
+    let username = localStorage.getItem('username');
+    this.props.fetchItems(username);
   }
 }
 
 const mapStateToProps = state => ({
   items: state.items,
   loading: state.loading,
-  error: state.error
+  error: state.error,
+  username: state.username
 });
 
 export default connect(
