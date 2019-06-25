@@ -99,7 +99,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         fetchingItems: false,
-        items: action.payload.filter(item => item.username === state.username)[0].items
+        items: action.payload
       }
     case FETCH_ITEMS_FAILURE:
       return {
@@ -117,7 +117,8 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         addingItem: false,
-        items: action.payload.filter(item => item.username === state.username)[0].items
+        items: action.payload
+        //action.payload.filter(item => item.username === state.username)[0].items
       }
     case ADD_ITEM_FAILURE:
       return {
@@ -135,7 +136,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         updatingItem: false,
-        items: action.payload.filter(item => item.username === state.username)[0].items
+        items: action.payload
       }
     case UPDATE_ITEM_FAILURE:
       return {
@@ -153,7 +154,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         deletingItem: false,
-        items: action.payload.filter(item => item.username === state.username)[0].items
+        items: action.payload
       }
     case DELETE_ITEM_FAILURE:
       return {

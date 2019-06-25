@@ -29,18 +29,8 @@ class ItemList extends React.Component {
       </div>
 
       <div className="items-wrapper">
-        {this.props.loading ? (
-          <div className="loader">
-            Loading...
-          </div>
-        ) : (
-          <>
-            {/* {this.props.items.map(item => (
-              <Item item={item}/>
-            ))} */}
-            <Item item={this.item}/>
-          </>
-        )}
+        {this.props.loading & <div className="loader">Loading...</div>}
+        {this.props.items.map(item => <Item item={item} key={item.itemid}/>)}
       </div>
       </div>
 

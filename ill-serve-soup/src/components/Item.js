@@ -12,14 +12,15 @@ class Item extends React.Component {
     return (
       <div className="item-card">
         <div className="card-body">
-          <h1>
-          {/* {this.props.item.name}  */}
-          "NAME"
-          </h1>
-          {/* <h3>{this.props.item.category}</h3>
-          <h3>{this.props.item.quantity}</h3>
-          <h3>{this.props.item.unit}</h3>
-          <h3>{this.props.item.threshold}</h3> */}
+          <h1>{this.props.item.itemname}</h1>
+          <p>{this.props.item.itemquanity}</p>
+          <p>{this.props.item.itemcategory}</p>
+          
+          {/* modified code based on backend data structure
+          <h3>{this.props.item.itemcategory}</h3>
+          <h3>{this.props.item.itemquantity}</h3>
+          <h3>{this.props.item.itemunit}</h3>
+          <h3>{this.props.item.itemthreshold}</h3> */}
         </div>
         <button onClick={(e) => this.deleteItem(e, this.props.item.id)}>Delete</button>
         <Link to="/itemForm" onClick={this.setUpdateForm}>Update</Link>
