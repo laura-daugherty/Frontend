@@ -34,14 +34,7 @@ class Login extends React.Component {
               onChange={this.handleChanges}
               required
             />
-            {
-                this.props.error ?  
-                <div>
-                  NO GOOD
-                </div>
-                :
-                <div></div>
-              }
+            {this.props.error &&  <div>NO GOOD</div>}
           </div>
           <div>
             <div className="login-button" onClick={this.login}>
@@ -61,12 +54,6 @@ class Login extends React.Component {
     );
   }
 
-  componentDidMount() {
-    if (this.props.token) {
-      this.props.history.push("/itemList");
-    }
-  }
-
   handleChanges = e => {
     e.preventDefault();
     this.setState({
@@ -83,6 +70,11 @@ class Login extends React.Component {
       .login({
         username: this.state.creds.username,
         password: this.state.creds.password
+      }).then(() => {
+        let token = localStorage.getItem('token');
+        if (token) {
+          this.props.history.push("/itemList");
+        }
       })
       // .then(() => {
       //   this.props.history.push("/itemList");
@@ -90,8 +82,7 @@ class Login extends React.Component {
   };
 }
 
-const mapStateToProps = ({ token, loggingIn, error }) => ({
-  token,
+const mapStateToProps = ({ loggingIn, error }) => ({
   loggingIn,
   error
 });

@@ -5,7 +5,7 @@ const axiosWithAuth = () => {
   return axios.create({
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': token
+      'Authorization':  `Bearer ${token}`
     },
   })
 }

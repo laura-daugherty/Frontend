@@ -20,13 +20,15 @@ class Notifications extends React.Component {
   
   getNotifications = () => {
     let alerts = [];
-    this.props.items.forEach(item => {
-      if (item.quantity === 0) {
-        alerts.push(`${item.name} is out of stock!`);
-      } else if (item.quantity < item.threshold) {
-        alerts.push(`${item.name} is running low.`);
-      }
-    });
+    if (this.props.items.length > 0) {
+      this.props.items.forEach(item => {
+        if (item.quantity === 0) {
+          alerts.push(`${item.name} is out of stock!`);
+        } else if (item.quantity < item.threshold) {
+          alerts.push(`${item.name} is running low.`);
+        }
+      });
+    }
     if (alerts.length === 0) {
       alerts.push('No alert.');
     }

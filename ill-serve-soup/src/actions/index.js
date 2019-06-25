@@ -5,17 +5,24 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const login = () => (dispatch) => {
+export const login = (credentials) => (dispatch) => {
   dispatch({
     type: LOGIN_START
   })
-  axios.post('https://alfonsog-kitchen.herokuapp.com/oauth/token', 'grant_type=password&username=admin&password=password')
+  return axios.post('https://alfonsog-kitchen.herokuapp.com/oauth/token', `grant_type=password&username=${credentials.username}&password=${credentials.password}`, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0'
+    },
+  })
     .then(response => {
       console.log('login success: ', response)
       dispatch({
         type: LOGIN_SUCCESS,
+        payload: credentials.username
       })
-      //localStorage.setItem('token', response.data.payload)
+      localStorage.setItem('token', response.data.access_token)
+      localStorage.setItem('username', credentials.username)
     })
     .catch(error => {
       console.log('login error: ', error);
@@ -42,15 +49,34 @@ export const register = (credentials) => (dispatch) => {
   dispatch({
     type: REGISTER_START
   })
-  axiosWithAuth().post('http://localhost:5000/api/friends', credentials)
+  axios.post('https://alfonsog-kitchen.herokuapp.com/createnewuser', credentials)
     .then(response => {
       console.log('registering success: ', response)
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: credentials.username
       })
-      localStorage.setItem('token', /*response.data.payload  */)
-      localStorage.setItem('username', credentials.username)
+      return axios.post('https://alfonsog-kitchen.herokuapp.com/oauth/token', `grant_type=password&username=${credentials.username}&password=${credentials.password}`, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Basic bGFtYmRhLWNsaWVudDpsYW1iZGEtc2VjcmV0'
+        },
+      })
+        .then(response => {
+          console.log('login success: ', response)
+          dispatch({
+            type: LOGIN_SUCCESS,
+            payload: credentials.username
+          })
+          localStorage.setItem('token', response.data.access_token)
+          localStorage.setItem('username', credentials.username)
+        })
+        .catch(error => {
+          console.log('login error: ', error);
+          dispatch({
+            type: LOGIN_FAILURE,
+            payload: 'error logging in'
+          })
+        })
     })
     .catch(error => {
       console.log('registering error: ', error);
@@ -65,21 +91,33 @@ export const FETCH_ITEMS_START = 'FETCH_ITEMS_START';
 export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
 export const FETCH_ITEMS_FAILURE = 'FETCH_ITEMS_FAILURE';
 
-export const fetchItems = (userid) => (dispatch) => {
+export const fetchItems = (username) => (dispatch) => {
   dispatch({
     type: FETCH_ITEMS_START
   })
-  axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/items/4`)
+  axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/users/getuser/${username}`)
      //is there anyway to get only the items associated with the particular username?
     .then(response => {
       console.log('fetching data success: ', response);
-      dispatch({
-        type: FETCH_ITEMS_SUCCESS,
-        payload: response.data
-      })
+      const userid = response.data.userid;
+      localStorage.setItem('userid', userid)
+      return axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/items/${userid}`)
+        .then(response => {
+          dispatch({
+            type: FETCH_ITEMS_SUCCESS,
+            payload: response.data
+          })
+        })
+        .catch(error => {
+          console.log('fetching data error inner: ', error);
+          dispatch({
+            type: FETCH_ITEMS_FAILURE,
+            payload: 'error fetching items'
+          })
+        })
     })
     .catch(error => {
-      console.log('fetching data error: ', error);
+      console.log('fetching data error outer: ', error);
       dispatch({
         type: FETCH_ITEMS_FAILURE,
         payload: 'error fetching items'
@@ -91,11 +129,12 @@ export const ADD_ITEM_START = 'ADD_ITEM_START';
 export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
-export const addItem = (userid, item) => (dispatch) => {
+export const addItem = (item) => (dispatch) => {
   dispatch({
     type: ADD_ITEM_START
-  })
-  axiosWithAuth().post(`https://alfonsog-kitchen.herokuapp.com/items/4/items`, item)
+  });
+  const userid = localStorage.getItem('userid');
+  axiosWithAuth().post(`https://alfonsog-kitchen.herokuapp.com/items/${userid}/items`, item)
   .then(response => {
     console.log('adding item success: ', response);
     dispatch({
@@ -116,11 +155,12 @@ export const UPDATE_ITEM_START = 'UPDATE_ITEM_START';
 export const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
 //CHANGED SPELLING OF UPDATE
-export const updateItem = (userid, item) => (dispatch) => {
+export const updateItem = (item) => (dispatch) => {
   dispatch({
     type: UPDATE_ITEM_START
-  })
-  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/4/items`, item)
+  });
+  const userid = localStorage.getItem('userid');
+  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/${userid}/items`, item)
     .then(response => {
       console.log('update item success: ', response);
       dispatch({

@@ -22,7 +22,7 @@ class Item extends React.Component {
           <h3>{this.props.item.itemunit}</h3>
           <h3>{this.props.item.itemthreshold}</h3> */}
         </div>
-        <button onClick={(e) => this.deleteItem(e, this.props.item.id)}>Delete</button>
+        <button onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</button>
         <Link to="/itemForm" onClick={this.setUpdateForm}>Update</Link>
       </div>
     );
