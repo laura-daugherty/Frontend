@@ -42,20 +42,19 @@ class Register extends React.Component {
                 </div>
                 :
                 <div></div>
-              }
+            }
           </div>
           <div>
             <div className="login-button" onClick={this.register}>
 
-              {/* Not sure if we still need this */}
-
-              {/* {this.props.loggingIn === true ? (
+              {/* Not sure if we still need this  */}
+              {this.props.loggingIn === true ? (
                 <div>
                   PROCESSING
                 </div>
               ) : (
                 <h3>GO</h3>
-              )} */}
+              )}
 
             </div>
           </div>
@@ -65,38 +64,37 @@ class Register extends React.Component {
   }
 
 
-
-componentDidMount() {
-  if (this.props.token) {
-    this.props.history.push("/register");
-  }
-}
-
-handleChanges = e => {
-  e.preventDefault();
-  this.setState({
-    creds: {
-      ...this.state.creds,
-      [e.target.name]: e.target.value
-    }
-  });
-};
-
-register = () => {
-  this.props
-    .login({
-      username: this.state.username,
-      password: this.state.password
-    })
-    .then(() => {
+  componentDidMount() {
+    if (this.props.token) {
       this.props.history.push("/itemList");
+    } 
+  }
+
+  handleChanges = e => {
+    e.preventDefault();
+    this.setState({
+      creds: {
+        ...this.state.creds,
+        [e.target.name]: e.target.value
+      }
     });
-};
+  };
+
+  register = () => {
+    this.props
+      .register({
+        username: this.state.creds.username,
+        password: this.state.creds.password
+      })
+      // .then(() => {
+      //   this.props.history.push("/itemList");
+      // });
+  };
 }
 
-const mapStateToProps = ({ token, /*loggingIn*/, error }) => ({
+const mapStateToProps = ({ token, loggingIn, error }) => ({
   token,
-  // loggingIn,
+  loggingIn,
   error
 });
 

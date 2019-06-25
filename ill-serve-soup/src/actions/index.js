@@ -9,7 +9,7 @@ export const login = (credentials) => (dispatch) => {
   dispatch({
     type: LOGIN_START
   })
-  axios.post(/*URL*/, credentials)
+  axios.post("localhost:3000", credentials)
     .then(response => {
       console.log('login success: ', response)
       dispatch({
@@ -97,7 +97,7 @@ export const addItem = (item) => (dispatch) => {
   dispatch({
     type: ADD_ITEM_START
   })
-  axiosWithAuth().post(/* URL */, item)
+  axiosWithAuth().post("localhost:3000", item)
   .then(response => {
     console.log('adding item success: ', response);
     dispatch({
@@ -117,12 +117,12 @@ export const addItem = (item) => (dispatch) => {
 export const UPDATE_ITEM_START = 'UPDATE_ITEM_START';
 export const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
-
-export const udpateItem = (item) => (dispatch) => {
+//CHANGED SPELLING OF UPDATE
+export const updateItem = (item) => (dispatch) => {
   dispatch({
     type: UPDATE_ITEM_START
   })
-  axiosWithAuth().put(/*URL*/, item)
+  axiosWithAuth().put("localhost:3000", item)
     .then(response => {
       console.log('update item success: ', response);
       dispatch({

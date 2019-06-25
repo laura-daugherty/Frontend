@@ -11,6 +11,7 @@ class Login extends React.Component {
   },
  }
   render() {
+    console.log("loginFormProps", this.props)
     return (
       <div className="login-wrapper">
         <form>
@@ -60,34 +61,33 @@ class Login extends React.Component {
     );
   }
 
-
-
-componentDidMount() {
-  if (this.props.token) {
-    this.props.history.push("/login");
-  }
-}
-
-handleChanges = e => {
-  e.preventDefault();
-  this.setState({
-    creds: {
-      ...this.state.creds,
-      [e.target.name]: e.target.value
+  componentDidMount() {
+    if (this.props.token) {
+      this.props.history.push("/itemList");
     }
-  });
-};
+  }
 
-login = () => {
-  this.props
-    .login({
-      username: this.state.username,
-      password: this.state.password
-    })
-    .then(() => {
-      this.props.history.push("/home");
+  handleChanges = e => {
+    e.preventDefault();
+    this.setState({
+      creds: {
+        ...this.state.creds,
+        [e.target.name]: e.target.value
+      }
     });
-};
+  };
+
+  login = () => {
+    console.log("loginFunctionProps", this.props)
+    this.props
+      .login({
+        username: this.state.creds.username,
+        password: this.state.creds.password
+      })
+      // .then(() => {
+      //   this.props.history.push("/itemList");
+      // });
+  };
 }
 
 const mapStateToProps = ({ token, loggingIn, error }) => ({

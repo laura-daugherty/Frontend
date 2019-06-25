@@ -5,12 +5,28 @@ import { connect } from "react-redux";
 import Item from "./Item"
 
 // Needed Action Imports
-import { fetchingItems } from "../actions";
+import { fetchItems } from "../actions";
 
 class ItemList extends React.Component {
 
   render() {
     return (
+      <div>
+
+      <nav>
+        <div>LOGO</div>
+      </nav>
+        {/* Conditional Rendering - if @ certain path, display element */}
+      <div className="notification-banner">
+        {/* Display <Notification> element here */}
+        NOTIFICATION! This stuff is Low
+      </div>
+
+      <div className="sidebar">
+        Sidebar
+        {/* Display <Sidebar> element here */}
+      </div>
+
       <div className="items-wrapper">
         {this.props.loading ? (
           <div className="loader">
@@ -18,28 +34,33 @@ class ItemList extends React.Component {
           </div>
         ) : (
           <>
-            {this.props.items.map(item => (
-              <Item item={item} />
-            ))}
+            {/* {this.props.items.map(item => (
+              <Item item={item}/>
+            ))} */}
+            <Item item={this.item}/>
           </>
         )}
       </div>
-    );
+      </div>
+
+    )
   }
-  
+
   componentDidMount() {
-    this.props.fetchingItems();
+    // console.log("CDM", this.props)
+    this.props.fetchItems();
   }
 }
 
 const mapStateToProps = state => ({
   items: state.items,
-  loading: state.loading
+  loading: state.loading,
+  error: state.error
 });
 
 export default connect(
   mapStateToProps,
   {
-    fetchingItems,
+    fetchItems,
   }
 )(ItemList);
