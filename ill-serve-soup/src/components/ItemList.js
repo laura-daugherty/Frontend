@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 //Needed Component Imports
 import Item from "./Item"
+import Notifications from './Notifications';
 
 // Needed Action Imports
 import { fetchItems } from "../actions";
@@ -19,7 +20,7 @@ class ItemList extends React.Component {
         {/* Conditional Rendering - if @ certain path, display element */}
       <div className="notification-banner">
         {/* Display <Notification> element here */}
-        NOTIFICATION! This stuff is Low
+        <Notifications items={this.props.items}/>
       </div>
 
       <div className="sidebar">
