@@ -5,24 +5,22 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const login = (credentials) => (dispatch) => {
+export const login = () => (dispatch) => {
   dispatch({
     type: LOGIN_START
   })
-  axios.post("localhost:3000", credentials)
+  axios.post('https://alfonsog-kitchen.herokuapp.com/oauth/token', 'grant_type=password&username=admin&password=password')
     .then(response => {
       console.log('login success: ', response)
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: credentials.username
       })
-      localStorage.setItem('token', /*response.data.payload  */)
-      localStorage.setItem('username', credentials.username)
+      //localStorage.setItem('token', response.data.payload)
     })
     .catch(error => {
       console.log('login error: ', error);
       dispatch({
-        type: LOGIN_SUCCESS,
+        type: LOGIN_FAILURE,
         payload: 'error logging in'
       })
     })
@@ -67,11 +65,11 @@ export const FETCH_ITEMS_START = 'FETCH_ITEMS_START';
 export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
 export const FETCH_ITEMS_FAILURE = 'FETCH_ITEMS_FAILURE';
 
-export const fetchItems = () => (dispatch) => {
+export const fetchItems = (userid) => (dispatch) => {
   dispatch({
     type: FETCH_ITEMS_START
   })
-  axiosWithAuth().get(/*URL*/)
+  axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/items/4`)
      //is there anyway to get only the items associated with the particular username?
     .then(response => {
       console.log('fetching data success: ', response);
@@ -93,11 +91,11 @@ export const ADD_ITEM_START = 'ADD_ITEM_START';
 export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
-export const addItem = (item) => (dispatch) => {
+export const addItem = (userid, item) => (dispatch) => {
   dispatch({
     type: ADD_ITEM_START
   })
-  axiosWithAuth().post("localhost:3000", item)
+  axiosWithAuth().post(`https://alfonsog-kitchen.herokuapp.com/items/4/items`, item)
   .then(response => {
     console.log('adding item success: ', response);
     dispatch({
@@ -118,11 +116,11 @@ export const UPDATE_ITEM_START = 'UPDATE_ITEM_START';
 export const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
 //CHANGED SPELLING OF UPDATE
-export const updateItem = (item) => (dispatch) => {
+export const updateItem = (userid, item) => (dispatch) => {
   dispatch({
     type: UPDATE_ITEM_START
   })
-  axiosWithAuth().put("localhost:3000", item)
+  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/4/items`, item)
     .then(response => {
       console.log('update item success: ', response);
       dispatch({
@@ -144,11 +142,11 @@ export const DELETE_ITEM_START = 'DELETE_ITEM_START';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
 
-export const deleteItem = (item) => (dispatch) => {
+export const deleteItem = (itemid) => (dispatch) => {
   dispatch({
     type: DELETE_ITEM_START
   })
-  axiosWithAuth().delete(/*URL*/)
+  axiosWithAuth().delete(`https://alfonsog-kitchen.herokuapp.com/items/${itemid}`)
     .then(response => {
       console.log('delete item success: ', response);
       dispatch({
@@ -171,8 +169,3 @@ export const deleteItem = (item) => (dispatch) => {
 //this action does not need to go through API calls so not sure if we need to have all 3 actions
 export const SORT_ITEMS = 'SORT_ITEMS';
 
-
-// 	stockAlert = 
-// ITEM_STOCK_ALERT
-// ITEM_STOCK_ALERT_SUCCESS
-// ITEM_STOCK_ALERT_FAILURE
