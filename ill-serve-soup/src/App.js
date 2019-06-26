@@ -44,8 +44,6 @@ class App extends React.Component {
         <PrivateRoute exact path="/itemList" component={ItemList} />
         <PrivateRoute exact path="/ItemForm" component={ItemForm} />
         <PrivateRoute exact path="/UpdateForm" component={UpdateForm} />
-
-
       </div>
     );
   }

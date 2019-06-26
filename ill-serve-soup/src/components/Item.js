@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 // Needed Action Imports
-import { deleteItem } from "../actions"
+import { deleteItem, setActive } from "../actions"
 
 
 class Item extends React.Component {
@@ -17,7 +17,7 @@ class Item extends React.Component {
           <h3>{this.props.item.itemthreshold}</h3> 
         </div>
         <button onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</button>
-        <button onClick={(e) => this.props.setUpdateForm(e, this.props.item)}>Update</button>
+        <button onClick={(e) => this.setUpdateForm(e, this.props.item)}>Update</button>
         
       </div>
     );
@@ -27,18 +27,25 @@ class Item extends React.Component {
     e.preventDefault();
     this.props.deleteItem(itemid)
   }
+
+  setUpdateForm = (e, item) => {
+    e.preventDefault();
+    this.props.setActive(item)
+    this.props.history.push('/itemForm')
+  }
 }
 
 
 const mapStateToProps = state => {
   return {
-    items: state.items,
+    error: state.error,
+    deletingItem: state.deletingItem
   }
 };
 
 export default connect(
 mapStateToProps,
 {
-  deleteItem,
+  deleteItem, setActive
 }
 )(Item);

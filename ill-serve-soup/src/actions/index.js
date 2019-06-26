@@ -231,3 +231,11 @@ export const deleteItem = (itemid) => (dispatch) => {
 //this action does not need to go through API calls so not sure if we need to have all 3 actions
 export const SORT_ITEMS = 'SORT_ITEMS';
 
+export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
+
+export const setActive = (item) => {
+  return ({
+    type: SET_ACTIVE_ITEM,
+    payload: item
+  })
+}

@@ -18,10 +18,12 @@ import {
   DELETE_ITEM_START,
   DELETE_ITEM_SUCCESS,
   DELETE_ITEM_FAILURE,
+  SET_ACTIVE_ITEM,
   SORT_ITEMS,
 } from "../actions"
 
 const initialState = {
+  activeItem: null,
   items: [],
   loggingIn: false,
   isLoggedIn: false,
@@ -113,7 +115,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         addingItem: false,
         items: action.payload
-        //action.payload.filter(item => item.username === state.username)[0].items
       }
     case ADD_ITEM_FAILURE:
       return {
@@ -131,13 +132,15 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         updatingItem: false,
-        items: action.payload
+        items: action.payload,
+        activeItem: null
       }
     case UPDATE_ITEM_FAILURE:
       return {
         ...state,
         updatingItem: false,
-        error: action.payload
+        error: action.payload,
+        activeItem: null
       }
     case DELETE_ITEM_START:
       return {
@@ -156,6 +159,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         deletingItem: false,
         error: action.payload
+      }
+    case SET_ACTIVE_ITEM:
+      return {
+        ...state,
+        activeItem: action.payload
       }
     default:
       return state;
