@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Login from "./components/Login";
 import ItemList from "./components/ItemList";
 import ItemForm from './components/ItemForm';
+import UpdateForm from './components/UpdateForm'
 import Register from './components/Register';
 import Home from './components/Home'
 import PrivateRoute from './utilities/PrivateRoute';
@@ -31,6 +32,8 @@ class App extends React.Component {
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/itemList" component={ItemList} />
         <PrivateRoute exact path="/ItemForm" component={ItemForm} />
+        <PrivateRoute exact path="/UpdateForm" component={UpdateForm} />
+
 
       </div>
     );

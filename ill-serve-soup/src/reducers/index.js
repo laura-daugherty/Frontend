@@ -23,6 +23,7 @@ import {
 
 const initialState = {
   items: [],
+  activeItem: null,
   loggingIn: false,
   isLoggedIn: false,
   registering: false,

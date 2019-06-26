@@ -20,34 +20,36 @@ class ItemList extends React.Component {
   render() {
     return (
       <div>
+        <nav>
+          <div>LOGO</div>
+          <Link to="/itemForm">Add new item</Link>
+        </nav>
 
-      <nav>
-        <div>LOGO</div>
-        <Link to="/itemForm">Add new item</Link>
-      </nav>
-        {/* Conditional Rendering - if @ certain path, display element */}
-      <div className="notification-banner">
-        {/* Display <Notification> element here */}
-        <Notifications items={this.props.items}/>
-      </div>
+        <div className="notification-banner">
+          <Notifications items={this.props.items}/>
+        </div>
 
-      <div className="sidebar">
-        Sidebar
-        {/* Display <Sidebar> element here */}
-      </div>
-      <Link to='/ItemForm'/>
-      <div className="items-wrapper">
-        {this.props.fetchingItems & <div className="loader">Loading...</div>}
-        {this.props.items.length === 0 && <div>No item in the inventory</div>}
-        {this.props.items.length > 0 && this.props.items.map(item => <Item item={item} key={item.itemid}/>)}
-      </div>
+        <div className="sidebar">
+          Sidebar
+          {/* Display <Sidebar> element here */}
+        </div>
+
+        <Link to='/ItemForm'/>
+
+        <div className="items-wrapper">
+          {this.props.fetchingItems & <div className="loader">Loading...</div>}
+          {this.props.items.length === 0 && <div>No item in the inventory</div>}
+          {this.props.items.length > 0 && this.props.items.map(item => 
+          <Item history={this.props.history} item={item} key={item.itemid}/>)}
+        </div>
+
       </div>
 
     )
   }
 
   componentDidMount() {
-    // console.log("CDM", this.props)
+    console.log("CDM", this.props.history)
     let username = localStorage.getItem('username');
     this.props.fetchItems(username);
   }
@@ -57,6 +59,7 @@ const mapStateToProps = state => ({
   items: state.items,
   fetchingItems: state.fetchingItems,
   error: state.error,
+  activeItem: state.activeItem
 });
 
 export default connect(
