@@ -5,9 +5,11 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+      <div className="home-bg">
+        <div className="log-container">
+          <Link className="log-button" to="/login">Login</Link>
+          <Link className="log-button" to="/register">Register</Link>
+        </div>
       </div>
     )
   }
