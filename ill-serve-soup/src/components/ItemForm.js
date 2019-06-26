@@ -5,11 +5,11 @@ import { addItem, updateItem } from "../actions";
 
 class ItemForm extends React.Component {
   state = {
-    name: '',
-    quantity: '',
-    unit: '',
-    threshold: '',
-    category: ''
+      itemname: '',
+      itemquantity: '',
+      itemunit: '',
+      itemthreshold: '',
+      itemcategory: ''
   };
   render() {
     return (
@@ -17,40 +17,40 @@ class ItemForm extends React.Component {
         <div>
           <input
             placeholder="Item Name"
-            name="name"
-            value={this.state.name}
+            name="itemname"
+            value={this.state.itemname}
             onChange={this.handleChanges}
           />
         </div>
         <div>
           <input
             placeholder="Item Category"
-            name="category"
-            value={this.state.category}
+            name="itemcategory"
+            value={this.state.itemcategory}
             onChange={this.handleChanges}
           />
         </div>
         <div>
           <input
             placeholder="Item Quantity"
-            name="quantity"
-            value={this.state.quantity}
+            name="itemquantity"
+            value={this.state.itemquantity}
             onChange={this.handleChanges}
           />
         </div>
         <div>
           <input
             placeholder="Item Unit"
-            name="unit"
-            value={this.state.unit}
+            name="itemunit"
+            value={this.state.itemunit}
             onChange={this.handleChanges}
           />
         </div>
         <div>
           <input
             placeholder="Low Stock Threshold"
-            name="threshold"
-            value={this.state.threshold}
+            name="itemthreshold"
+            value={this.state.itemthreshold}
             onChange={this.handleChanges}
           />
         </div>
@@ -77,14 +77,16 @@ class ItemForm extends React.Component {
 
   addItem = e => {
     e.preventDefault();
+    console.log("ItemName", this.state.itemname)
     const newItem = {
-      name: this.state.name,
-      quantity: this.state.quantity,
-      unit: this.state.unit,
-      threshold: this.state.threshold,
-      category: this.state.category
+      itemname: this.state.itemname,
+      itemquantity: this.state.itemquantity,
+      itemunit: this.state.itemunit,
+      itemthreshold: this.state.itemthreshold,
+      itemcategory: this.state.itemcategory
     };
     this.props.addItem(newItem);
+    console.log("newItem", newItem)
   };
 }
 

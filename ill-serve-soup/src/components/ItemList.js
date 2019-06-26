@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom"
 
 //Needed Component Imports
 import Item from "./Item"
@@ -9,6 +10,12 @@ import Notifications from './Notifications';
 import { fetchItems } from "../actions";
 
 class ItemList extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      items: []
+    }
+  }
 
   render() {
     return (
@@ -16,6 +23,7 @@ class ItemList extends React.Component {
 
       <nav>
         <div>LOGO</div>
+        <Link to="/itemForm">Add Item</Link>
       </nav>
         {/* Conditional Rendering - if @ certain path, display element */}
       <div className="notification-banner">
@@ -29,7 +37,7 @@ class ItemList extends React.Component {
       </div>
 
       <div className="items-wrapper">
-        {this.props.loading & <div className="loader">Loading...</div>}
+        {this.props.fetchingItems & <div className="loader">Loading...</div>}
         {this.props.items.length === 0 && <div>No item in the inventory</div>}
         {this.props.items.length > 0 && this.props.items.map(item => <Item item={item} key={item.itemid}/>)}
       </div>
@@ -47,9 +55,8 @@ class ItemList extends React.Component {
 
 const mapStateToProps = state => ({
   items: state.items,
-  loading: state.loading,
+  fetchingItems: state.fetchingItems,
   error: state.error,
-  username: state.username
 });
 
 export default connect(
