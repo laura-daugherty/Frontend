@@ -5,14 +5,25 @@ import { Link } from "react-router-dom";
 import { updateItem } from "../actions";
 
 class UpdateForm extends React.Component {
-  state = {
-      itemname: '',
-      itemquantity: '',
-      itemunit: '',
-      itemthreshold: '',
-      itemcategory: ''
-  };
+  constructor(props) {
+    super(props);
+    console.log(props)
+
+    const activeItem = this.props.activeItem
+    this.state = {}
+    if (activeItem) {
+      this.state = {...this.props.activeItem}
+    }
+  }
+  // state = {
+  //   itemname: this.props.activeItem.itemname,
+  //   itemquantity: '',
+  //   itemunit: '',
+  //   itemthreshold: '',
+  //   itemcategory: ''
+  // };
   render() {
+    console.log("state", this.state)
     return (
       <div> 
         <Link to='/itemList'>Back to inventory</Link>
@@ -68,17 +79,15 @@ class UpdateForm extends React.Component {
   }
 
   handleChanges = e => {
-    e.preventDefault();
+    e.persist();
     let value = e.target.value
-    if (e.target.name === "itemquantity") {
-      value = parseInt(value)
-    }
-    if (e.target.name === "itemthreshold") {
-      value = parseInt(value)
-    }
-    this.setState({
-      [e.target.name]: value
-    });
+    // if (e.target.name === "itemquantity") {
+    //   value = parseInt(value)
+    // }
+    // if (e.target.name === "itemthreshold") {
+    //   value = parseInt(value)
+    // }
+    this.setState({ [e.target.name]: value });
   };
 
   // updateItem = e => {
@@ -95,11 +104,16 @@ class UpdateForm extends React.Component {
   //   console.log("updatedItem", updatedItem)
   //   this.props.updateItem(updatedItem);
   // };
+  updateItem = e => {
+    e.preventDefault();
+    console.log(updateItem)
+    console.log(this.state)
+    this.props.updateItem(this.state)
+  }
 }
 
 const mapStateToProps = state => ({
   items: state.items,
-  activeItem: state.activeItem
 });
 
 export default connect(
