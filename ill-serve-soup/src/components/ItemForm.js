@@ -2,21 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { addItem } from "../actions";
+import { addItem, updateItem } from "../actions";
 
 class ItemForm extends React.Component {
-  state = {
+  constructor() {
+    super();
+    this.state = {
       itemname: '',
       itemquantity: '',
       itemunit: '',
       itemthreshold: '',
       itemcategory: ''
-  };
+    };
+  }
+  
+
   render() {
     return (
       <div> 
         <Link to='/itemList'>Back to inventory</Link>
-        <form className="item-form">
+        <form className="item-form" onSubmit={this.submitHandler}>
           <div>
             <input
               type='text'
@@ -78,23 +83,24 @@ class ItemForm extends React.Component {
             />
           </div>
           <div>
-            <div onClick={this.addItem}>
-              <h3>Add Your Item</h3>
-            </div>
-
+            <button>Save</button>
           </div>
         </form>
       </div>
     )
   }
 
-  handleChanges = e => {
-    e.preventDefault();
-    let value = e.target.value
-    if (e.target.name === "itemquantity") {
-      value = parseInt(value)
+  componentDidMount() {
+    if (this.props.activeItem) {
+      this.setState({
+        ...this.props.activeItem
+      })
     }
-    if (e.target.name === "itemthreshold") {
+  }
+
+  handleChanges = e => {
+    let value = e.target.value
+    if (e.target.name === "itemquantity" || e.target.name === "itemthreshold") {
       value = parseInt(value)
     }
     this.setState({
@@ -102,18 +108,15 @@ class ItemForm extends React.Component {
     });
   };
 
-  addItem = e => {
+  submitHandler = e => {
     e.preventDefault();
-    console.log("ItemName", this.state.itemname)
-    const newItem = {
-      itemname: this.state.itemname,
-      itemquantity: this.state.itemquantity,
-      itemunit: this.state.itemunit,
-      itemthreshold: this.state.itemthreshold,
-      itemcategory: this.state.itemcategory
-    };
+    const newItem = {...this.state}
     console.log("newItem", newItem)
-    this.props.addItem(newItem);
+    if (this.props.activeItem) {
+      this.props.updateItem(newItem)
+    } else {
+      this.props.addItem(newItem);
+    }
     //reset form after item was added
     this.setState({
       itemname: '',
@@ -125,16 +128,16 @@ class ItemForm extends React.Component {
   };
 }
 
-
-
 const mapStateToProps = state => ({
   items: state.items,
+  addingItem: state.addingItem,
+  updatingItem: state.updatingItem,
   activeItem: state.activeItem
 });
 
 export default connect(
   mapStateToProps,
   {
-    addItem,
+    addItem, updateItem
   }
 )(ItemForm);

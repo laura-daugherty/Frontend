@@ -15,14 +15,14 @@ class ItemList extends React.Component {
     super();
     this.state = {
       items: [],
-      activeItem: null
+      //activeItem: null
     }
   }
 
   render() {
     return (
       <div>
-        <Link to="/itemForm">Add new item</Link>
+        <Link to='/itemForm'>Add new item</Link>
         <div className="notification-banner">
           <Notifications items={this.props.items}/>
         </div>
@@ -31,16 +31,17 @@ class ItemList extends React.Component {
           Sidebar
           {/* Display <Sidebar> element here */}
         </div>
-
+        {/* 
         {this.state.activeItem && (
           <UpdateForm  updateItem={this.updateItem} activeItem={this.state.activeItem}/>
         )}
+        */}
 
         <div className="items-wrapper">
           {this.props.fetchingItems && <div className="loader">Loading...</div>}
           {this.props.items.length === 0 && <div>No item in the inventory</div>}
           {this.props.items.length > 0 && this.props.items.map(item => 
-          <Item setUpdateForm={this.setUpdateForm} history={this.props.history} item={item} key={item.itemid}/>)}
+          <Item history={this.props.history} item={item} key={item.itemid}/>)}
         </div>
 
       </div>
@@ -53,7 +54,8 @@ class ItemList extends React.Component {
     let username = localStorage.getItem('username');
     this.props.fetchItems(username);
   }
-
+  
+  /*
   updateItem = (e, item) => {
     e.preventDefault();
     console.log(updateItem)
@@ -64,6 +66,7 @@ class ItemList extends React.Component {
     this.props.updateItem(item);
   }
 
+  
   //SET UPDATE FORM
   setUpdateForm = (e, item) => {
     e.preventDefault();
@@ -75,7 +78,9 @@ class ItemList extends React.Component {
       // console.log("props", this.props)
       // this.props.history.push("/UpdateForm")
     })
+    
   }
+  */
 }
 
 const mapStateToProps = state => ({
