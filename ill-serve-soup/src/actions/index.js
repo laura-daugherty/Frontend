@@ -160,8 +160,7 @@ export const updateItem = (item) => (dispatch) => {
   dispatch({
     type: UPDATE_ITEM_START
   });
-  const userid = localStorage.getItem('userid');
-  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/${userid}/items`, item)
+  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/${item.id}`, item)
     .then(response => {
       console.log('update item success: ', response);
       dispatch({
@@ -190,10 +189,21 @@ export const deleteItem = (itemid) => (dispatch) => {
   axiosWithAuth().delete(`https://alfonsog-kitchen.herokuapp.com/items/${itemid}`)
     .then(response => {
       console.log('delete item success: ', response);
-      dispatch({
-        type: DELETE_ITEM_SUCCESS,
-        payload: response.data
-      })
+      const userid = localStorage.getItem('userid')
+      return axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/items/${userid}`)
+        .then(response => {
+          dispatch({
+            type: DELETE_ITEM_SUCCESS,
+            payload: response.data
+          })
+        })
+        .catch(error => {
+          console.log('fetching after deleting error: ', error);
+          dispatch({
+            type: DELETE_ITEM_FAILURE,
+            payload: 'error deleting item'
+          })
+        })
     })
     .catch(error => {
       console.log('delete item error: ', error);
