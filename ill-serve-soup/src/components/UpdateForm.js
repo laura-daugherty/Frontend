@@ -2,17 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { updateItem } from "../actions";
+//import { updateItem } from "../actions";
 
 class UpdateForm extends React.Component {
   constructor(props) {
     super(props);
     console.log(props)
-
+    /*
     const activeItem = this.props.activeItem
     this.state = {}
     if (activeItem) {
       this.state = {...this.props.activeItem}
+    }
+    */
+    this.state = {
+      itemname: '',
+      itemquantity: '',
+      itemunit: '',
+      itemthreshold: '',
+      itemcategory: ''
     }
   }
   // state = {
@@ -22,6 +30,7 @@ class UpdateForm extends React.Component {
   //   itemthreshold: '',
   //   itemcategory: ''
   // };
+
   render() {
     console.log("state", this.state)
     return (
@@ -30,46 +39,56 @@ class UpdateForm extends React.Component {
         <form className="item-form">
           <div>
             <input
+              type='text'
               placeholder="Item Name"
               name="itemname"
               value={this.state.itemname}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
             <input
+              type='text'
               placeholder="Item Category"
               name="itemcategory"
               value={this.state.itemcategory}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
             <input
+              type='number'
               placeholder="Item Quantity"
               name="itemquantity"
               value={this.state.itemquantity}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
             <input
+              type='text'
               placeholder="Item Unit"
               name="itemunit"
               value={this.state.itemunit}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
             <input
+              type='number'
               placeholder="Low Stock Threshold"
               name="itemthreshold"
               value={this.state.itemthreshold}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
-            <div onClick={this.updateItem}>
+            <div onClick={this.updateHandler}>
               <h3>Update Your Item</h3>
             </div>
           </div>
@@ -78,15 +97,28 @@ class UpdateForm extends React.Component {
     )
   }
 
+  componentDidMount() {
+    if (this.props.activeItem) {
+      this.setState({
+        ...this.props.activeItem,
+      })
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.activeItem && prevProps.activeItem !== this.props.activeItem) {
+      this.setState({
+        input: this.props.activeItem
+      })
+    }
+  }
+
   handleChanges = e => {
     e.persist();
     let value = e.target.value
-    // if (e.target.name === "itemquantity") {
-    //   value = parseInt(value)
-    // }
-    // if (e.target.name === "itemthreshold") {
-    //   value = parseInt(value)
-    // }
+    if (e.target.name === "itemquantity" || e.target.name === 'itemthreshold') {
+       value = parseInt(value)
+    }
     this.setState({ [e.target.name]: value });
   };
 
@@ -104,11 +136,17 @@ class UpdateForm extends React.Component {
   //   console.log("updatedItem", updatedItem)
   //   this.props.updateItem(updatedItem);
   // };
-  updateItem = e => {
+  updateHandler = (e) => {
     e.preventDefault();
-    console.log(updateItem)
-    console.log(this.state)
-    this.props.updateItem(this.state)
+    let updatedItem = {...this.state}
+    this.props.updateItem(e, updatedItem);
+    this.setState({
+      itemname: '',
+      itemquantity: '',
+      itemunit: '',
+      itemthreshold: '',
+      itemcategory: ''
+    })
   }
 }
 
@@ -119,6 +157,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    updateItem
+    
   }
 )(UpdateForm);
