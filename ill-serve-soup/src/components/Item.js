@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 // Needed Action Imports
 import { deleteItem } from "../actions"
 
+import UpdateForm from './UpdateForm'
+
 
 class Item extends React.Component {
   constructor() {
@@ -26,6 +28,9 @@ class Item extends React.Component {
         </div>
         <button onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</button>
         <button onClick={this.setUpdateForm}>Update</button>
+        {this.state.activeItem && (
+          <UpdateForm  activeItem={this.state.activeItem}/>
+        )}
       </div>
     );
   }
@@ -38,13 +43,13 @@ class Item extends React.Component {
   //SET UPDATE FORM
   setUpdateForm = (e) => {
     e.preventDefault();
-    // console.log("thisItem", this.props.item)
+    console.log("thisItem", this.props.item)
     this.setState({ 
       activeItem: this.props.item 
     }, () => {
       console.log("new state", this.state)
       // console.log("props", this.props)
-      this.props.history.push("/UpdateForm")
+      // this.props.history.push("/UpdateForm")
     })
   }
 }
