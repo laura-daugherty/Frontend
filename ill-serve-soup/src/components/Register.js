@@ -14,10 +14,6 @@ class Register extends React.Component {
   },
  }
   render() {
-    //redirect user to itemlist if there is token in localstorage
-    if (localStorage.getItem('token')) {
-      return <Redirect to='/itemList' />
-    }
     return (
       <div className="login-wrapper">
         <form>
