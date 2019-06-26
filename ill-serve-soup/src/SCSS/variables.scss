@@ -1,3 +1,14 @@
+
+
+@mixin header-font {
+  font-family: 'Crete Round', serif;
+}
+
+@mixin body-font {
+  font-family: "Roboto", sans-serif;
+}
+
+
 $color-one: #FAF3DD;
 $color-two: #DCEDB9;
 $color-three: #6CB043

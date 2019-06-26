@@ -14,6 +14,7 @@ import Home from './components/Home'
 import PrivateRoute from './utilities/PrivateRoute';
 
 //Style Stuff
+
 import './App.scss';
 
 class App extends React.Component {
@@ -31,7 +32,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className='App-header'>
-          <div>LOGO</div>
+          <div className="logo">
+            <img src="./Images/logo.png" alt="Serve Soup Logo"/>
+            <img src="./src/Images/Laura.png" alt="Laura's face"/>
+          </div>
           {/*profile icon? or anything to put in navbar*/}
           {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
         </header>
