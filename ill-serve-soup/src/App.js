@@ -2,6 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { logout } from './actions';
+
 // Components
 import Login from "./components/Login";
 import ItemList from "./components/ItemList";
@@ -15,15 +17,24 @@ import PrivateRoute from './utilities/PrivateRoute';
 import './App.scss';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log(props)
-    console.log("in constructor")
+
+  logout = (event) => {
+    event.preventDefault();
+    this.props.logout();
+    this.props.history.push('/')
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('userid');
   }
   
   render() {
     return (
       <div className="App">
+        <header className='App-header'>
+          <div>LOGO</div>
+          {/*profile icon? or anything to put in navbar*/}
+          {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
+        </header>
 
         {/* //Routes// */}
 
@@ -40,6 +51,10 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn
+})
+
+export default connect(mapStateToProps, { logout })(App);
 
 

@@ -160,13 +160,24 @@ export const updateItem = (item) => (dispatch) => {
   dispatch({
     type: UPDATE_ITEM_START
   });
-  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/${item.id}`, item)
+  axiosWithAuth().put(`https://alfonsog-kitchen.herokuapp.com/items/${item.itemid}`, item)
     .then(response => {
       console.log('update item success: ', response);
-      dispatch({
-        type: UPDATE_ITEM_SUCCESS,
-        payload: response.data
-      })
+      const userid = localStorage.getItem('userid')
+      return axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/items/${userid}`)
+        .then(response => {
+          dispatch({
+            type: UPDATE_ITEM_SUCCESS,
+            payload: response.data
+          })
+        })
+        .catch(error => {
+          console.log('fetching after updating error: ', error);
+          dispatch({
+            type: UPDATE_ITEM_FAILURE,
+            payload: 'error updating item'
+          })
+        })
     })
     .catch(error => {
       console.log('update item error: ', error);
