@@ -19,30 +19,49 @@ class ItemForm extends React.Component {
         <form className="item-form">
           <div>
             <input
+              type='text'
               placeholder="Item Name"
               name="itemname"
               value={this.state.itemname}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
+            <select name='itemcategory' value={this.state.itemcategory} onChange={this.handleChanges} required>
+              <option value='' disabled>Item Category</option>
+              <option value='dryGoods'>Dry Goods</option>
+              <option value='produce'>Produce</option>
+              <option value='meat'>Meat</option>
+              <option value='dairy'>Dairy</option>
+              <option value='miscellaneous'>Miscellaneous</option>
+            </select>
+          </div>
+          {/* 
+          <div>
             <input
+              type='text'
               placeholder="Item Category"
               name="itemcategory"
               value={this.state.itemcategory}
               onChange={this.handleChanges}
+              required
             />
           </div>
+          */}
           <div>
             <input
+              type='number'
               placeholder="Item Quantity"
               name="itemquantity"
               value={this.state.itemquantity}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
             <input
+              type='text'
               placeholder="Item Unit"
               name="itemunit"
               value={this.state.itemunit}
@@ -51,6 +70,7 @@ class ItemForm extends React.Component {
           </div>
           <div>
             <input
+              type='number'
               placeholder="Low Stock Threshold"
               name="itemthreshold"
               value={this.state.itemthreshold}
@@ -94,9 +114,15 @@ class ItemForm extends React.Component {
     };
     console.log("newItem", newItem)
     this.props.addItem(newItem);
-    
+    //reset form after item was added
+    this.setState({
+      itemname: '',
+      itemquantity: '',
+      itemunit: '',
+      itemthreshold: '',
+      itemcategory: ''
+    })
   };
-
 }
 
 
