@@ -7,12 +7,13 @@ import { deleteItem } from "../actions"
 
 
 class Item extends React.Component {
-  // state = {
-  //   items: {
-  //     activeItem:
-  //   }
-  // }
-  
+  constructor() {
+    super();
+    this.state = {
+      activeItem: null
+    }
+  }
+
   render() {
     return (
       <div className="item-card">
@@ -20,15 +21,11 @@ class Item extends React.Component {
           <h1>{this.props.item.itemname}</h1>
           <p>{this.props.item.itemquanity}</p>
           <p>{this.props.item.itemcategory}</p>
-          
-          {/* modified code based on backend data structure
-          <h3>{this.props.item.itemcategory}</h3>
-          <h3>{this.props.item.itemquantity}</h3>
           <h3>{this.props.item.itemunit}</h3>
-          <h3>{this.props.item.itemthreshold}</h3> */}
+          <h3>{this.props.item.itemthreshold}</h3> 
         </div>
         <button onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</button>
-        <Link to="/itemForm" onClick={this.setUpdateForm}>Update</Link>
+        <button onClick={this.setUpdateForm}>Update</button>
       </div>
     );
   }
@@ -39,13 +36,24 @@ class Item extends React.Component {
   }
 
   //SET UPDATE FORM
-
+  setUpdateForm = (e) => {
+    e.preventDefault();
+    // console.log("thisItem", this.props.item)
+    this.setState({ 
+      activeItem: this.props.item 
+    }, () => {
+      console.log("new state", this.state)
+      // console.log("props", this.props)
+      this.props.history.push("/UpdateForm")
+    })
+  }
 }
 
 
 const mapStateToProps = state => {
   return {
     items: state.items,
+    activeItem: state.activeItem
   }
 };
 

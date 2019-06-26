@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { addItem } from "../actions";
+import { updateItem } from "../actions";
 
-class ItemForm extends React.Component {
+class UpdateForm extends React.Component {
   state = {
       itemname: '',
       itemquantity: '',
@@ -58,10 +58,9 @@ class ItemForm extends React.Component {
             />
           </div>
           <div>
-            <div onClick={this.addItem}>
-              <h3>Add Your Item</h3>
+            <div onClick={this.updateItem}>
+              <h3>Update Your Item</h3>
             </div>
-
           </div>
         </form>
       </div>
@@ -82,24 +81,21 @@ class ItemForm extends React.Component {
     });
   };
 
-  addItem = e => {
-    e.preventDefault();
-    console.log("ItemName", this.state.itemname)
-    const newItem = {
-      itemname: this.state.itemname,
-      itemquantity: this.state.itemquantity,
-      itemunit: this.state.itemunit,
-      itemthreshold: this.state.itemthreshold,
-      itemcategory: this.state.itemcategory
-    };
-    console.log("newItem", newItem)
-    this.props.addItem(newItem);
-    
-  };
-
+  // updateItem = e => {
+  //   console.log("update props", this.props)
+  //   console.log("update state", this.state)
+  //   e.preventDefault();
+  //   const updatedItem = {
+  //     itemname: this.state.itemname,
+  //     itemquantity: this.state.itemquantity,
+  //     itemunit: this.state.itemunit,
+  //     itemthreshold: this.state.itemthreshold,
+  //     itemcategory: this.state.itemcategory
+  //   };
+  //   console.log("updatedItem", updatedItem)
+  //   this.props.updateItem(updatedItem);
+  // };
 }
-
-
 
 const mapStateToProps = state => ({
   items: state.items,
@@ -109,6 +105,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    addItem,
+    updateItem
   }
-)(ItemForm);
+)(UpdateForm);
