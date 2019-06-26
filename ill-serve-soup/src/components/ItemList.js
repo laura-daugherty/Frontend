@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 //Needed Component Imports
 import Item from "./Item"
@@ -23,7 +23,7 @@ class ItemList extends React.Component {
 
       <nav>
         <div>LOGO</div>
-        <Link to="/itemForm">Add Item</Link>
+        <Link to="/itemForm">Add new item</Link>
       </nav>
         {/* Conditional Rendering - if @ certain path, display element */}
       <div className="notification-banner">
@@ -35,7 +35,7 @@ class ItemList extends React.Component {
         Sidebar
         {/* Display <Sidebar> element here */}
       </div>
-
+      <Link to='/ItemForm'/>
       <div className="items-wrapper">
         {this.props.fetchingItems & <div className="loader">Loading...</div>}
         {this.props.items.length === 0 && <div>No item in the inventory</div>}

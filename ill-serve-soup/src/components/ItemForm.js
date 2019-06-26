@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { addItem, updateItem } from "../actions";
 
@@ -13,56 +14,59 @@ class ItemForm extends React.Component {
   };
   render() {
     return (
-      <form className="item-form">
-        <div>
-          <input
-            placeholder="Item Name"
-            name="itemname"
-            value={this.state.itemname}
-            onChange={this.handleChanges}
-          />
-        </div>
-        <div>
-          <input
-            placeholder="Item Category"
-            name="itemcategory"
-            value={this.state.itemcategory}
-            onChange={this.handleChanges}
-          />
-        </div>
-        <div>
-          <input
-            placeholder="Item Quantity"
-            name="itemquantity"
-            value={this.state.itemquantity}
-            onChange={this.handleChanges}
-          />
-        </div>
-        <div>
-          <input
-            placeholder="Item Unit"
-            name="itemunit"
-            value={this.state.itemunit}
-            onChange={this.handleChanges}
-          />
-        </div>
-        <div>
-          <input
-            placeholder="Low Stock Threshold"
-            name="itemthreshold"
-            value={this.state.itemthreshold}
-            onChange={this.handleChanges}
-          />
-        </div>
-        <div>
-          <div onClick={this.addItem}>
-            <h3>Add Your Item</h3>
+      <div> 
+        <Link to='/itemList'>Back to inventory</Link>
+        <form className="item-form">
+          <div>
+            <input
+              placeholder="Item Name"
+              name="itemname"
+              value={this.state.itemname}
+              onChange={this.handleChanges}
+            />
           </div>
-          <div onClick={this.updateItem}>
-            <h3>Update Your Item</h3>
+          <div>
+            <input
+              placeholder="Item Category"
+              name="itemcategory"
+              value={this.state.itemcategory}
+              onChange={this.handleChanges}
+            />
           </div>
-        </div>
-      </form>
+          <div>
+            <input
+              placeholder="Item Quantity"
+              name="itemquantity"
+              value={this.state.itemquantity}
+              onChange={this.handleChanges}
+            />
+          </div>
+          <div>
+            <input
+              placeholder="Item Unit"
+              name="itemunit"
+              value={this.state.itemunit}
+              onChange={this.handleChanges}
+            />
+          </div>
+          <div>
+            <input
+              placeholder="Low Stock Threshold"
+              name="itemthreshold"
+              value={this.state.itemthreshold}
+              onChange={this.handleChanges}
+            />
+          </div>
+          <div>
+            <div onClick={this.addItem}>
+              <h3>Add Your Item</h3>
+            </div>
+            <div onClick={this.updateItem}>
+              <h3>Update Your Item</h3>
+            </div>
+          </div>
+        </form>
+      </div>
     )
   }
 
@@ -85,8 +89,9 @@ class ItemForm extends React.Component {
       itemthreshold: this.state.itemthreshold,
       itemcategory: this.state.itemcategory
     };
-    this.props.addItem(newItem);
     console.log("newItem", newItem)
+    this.props.addItem(newItem);
+    
   };
 }
 
