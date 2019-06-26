@@ -35,10 +35,15 @@ class ItemForm extends React.Component {
           <div>
             <select name='itemcategory' value={this.state.itemcategory} onChange={this.handleChanges} required>
               <option value='' disabled>Item Category</option>
-              <option value='dryGoods'>Dry Goods</option>
               <option value='produce'>Produce</option>
               <option value='meat'>Meat</option>
+              <option value='fish'>Fish</option>
               <option value='dairy'>Dairy</option>
+              <option value='spices'>Spices</option>
+              <option value='bar'>Bar</option>
+              <option value='cannedGoods'>Canned Goods</option>
+              <option value='dryGoods'>Dry Goods</option>
+              <option value='supplies'>Supplies</option>
               <option value='miscellaneous'>Miscellaneous</option>
             </select>
           </div>
