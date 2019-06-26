@@ -2,6 +2,7 @@
 
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
 
 import { register } from "../actions";
 
@@ -35,39 +36,18 @@ class Register extends React.Component {
               onChange={this.handleChanges}
               required
             />
-            {
-                this.props.error ?  
-                <div>
-                  NO GOOD
-                </div>
-                :
-                <div></div>
-            }
+            {this.props.error && <div>NO GOOD</div>}
           </div>
           <div>
             <div className="login-button" onClick={this.register}>
 
               {/* Not sure if we still need this  */}
-              {this.props.loggingIn === true ? (
-                <div>
-                  PROCESSING
-                </div>
-              ) : (
-                <h3>GO</h3>
-              )}
-
+              {this.props.registering || this.props.loggingIn ? <div>PROCESSING</div> : <h3>GO</h3>}
             </div>
           </div>
         </form>
       </div>
     );
-  }
-
-
-  componentDidMount() {
-    if (this.props.token) {
-      this.props.history.push("/itemList");
-    } 
   }
 
   handleChanges = e => {
@@ -81,19 +61,20 @@ class Register extends React.Component {
   };
 
   register = () => {
-    this.props
-      .register({
+    //adding this.props.history as param so action creator will redirect after user is registered
+    this.props.register(this.props.history, {
         username: this.state.creds.username,
         password: this.state.creds.password
       })
+    
       // .then(() => {
       //   this.props.history.push("/itemList");
       // });
   };
 }
 
-const mapStateToProps = ({ token, loggingIn, error }) => ({
-  token,
+const mapStateToProps = ({ registering, loggingIn, error }) => ({
+  registering,
   loggingIn,
   error
 });
