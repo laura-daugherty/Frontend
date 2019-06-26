@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 //Needed Component Imports
 import Item from "./Item"
@@ -22,11 +22,7 @@ class ItemList extends React.Component {
   render() {
     return (
       <div>
-        <nav>
-          <div>LOGO</div>
-          <Link to="/itemForm">Add new item</Link>
-        </nav>
-
+        <Link to="/itemForm">Add new item</Link>
         <div className="notification-banner">
           <Notifications items={this.props.items}/>
         </div>

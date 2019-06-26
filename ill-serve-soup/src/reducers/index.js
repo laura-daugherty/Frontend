@@ -23,7 +23,6 @@ import {
 
 const initialState = {
   items: [],
-  //activeItem: null,  //i would put this in the component state as this does not need to be in the global state
   loggingIn: false,
   isLoggedIn: false,
   registering: false,
@@ -57,8 +56,6 @@ export const reducer = (state = initialState, action) => {
       }
     case LOGOUT: 
       return {
-        userId: null,  
-        username: '',
         items: [],
         loggingIn: false,
         isLoggedIn: false,

@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 // Needed Action Imports
 import { deleteItem } from "../actions"
-
-import UpdateForm from './UpdateForm'
 
 
 class Item extends React.Component {

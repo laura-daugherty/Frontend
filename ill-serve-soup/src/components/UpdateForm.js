@@ -108,7 +108,7 @@ class UpdateForm extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.activeItem && prevProps.activeItem !== this.props.activeItem) {
       this.setState({
-        input: this.props.activeItem
+        ...this.props.activeItem
       })
     }
   }
