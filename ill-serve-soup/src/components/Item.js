@@ -7,6 +7,11 @@ import { deleteItem } from "../actions"
 
 
 class Item extends React.Component {
+  // state = {
+  //   items: {
+  //     activeItem:
+  //   }
+  // }
   
   render() {
     return (
@@ -34,7 +39,7 @@ class Item extends React.Component {
   }
 
   //SET UPDATE FORM
-  
+
 }
 
 
@@ -50,4 +55,3 @@ mapStateToProps,
   deleteItem,
 }
 )(Item);
-

@@ -8,7 +8,7 @@ import ItemList from "./components/ItemList";
 import ItemForm from './components/ItemForm';
 import Register from './components/Register';
 import Home from './components/Home'
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './utilities/PrivateRoute';
 
 //Style Stuff
 import './App.scss';
@@ -29,8 +29,8 @@ class App extends React.Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <Route exact path="/itemList" component={ItemList} />
-        <Route exact path="/ItemForm" component={ItemForm} />
+        <PrivateRoute exact path="/itemList" component={ItemList} />
+        <PrivateRoute exact path="/ItemForm" component={ItemForm} />
 
       </div>
     );

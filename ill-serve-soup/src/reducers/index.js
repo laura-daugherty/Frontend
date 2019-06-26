@@ -22,8 +22,6 @@ import {
 } from "../actions"
 
 const initialState = {
-  userId: null,  
-  username: '',
   items: [],
   loggingIn: false,
   isLoggedIn: false,
