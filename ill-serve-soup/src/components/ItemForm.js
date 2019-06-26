@@ -41,8 +41,8 @@ class ItemForm extends React.Component {
               <option value='dairy'>Dairy</option>
               <option value='spices'>Spices</option>
               <option value='bar'>Bar</option>
-              <option value='cannedGoods'>Canned Goods</option>
-              <option value='dryGoods'>Dry Goods</option>
+              <option value='canned_goods'>Canned Goods</option>
+              <option value='dry_goods'>Dry Goods</option>
               <option value='supplies'>Supplies</option>
               <option value='miscellaneous'>Miscellaneous</option>
             </select>
@@ -62,6 +62,7 @@ class ItemForm extends React.Component {
           <div>
             <input
               type='number'
+              min='0'
               placeholder="Item Quantity"
               name="itemquantity"
               value={this.state.itemquantity}
@@ -81,6 +82,7 @@ class ItemForm extends React.Component {
           <div>
             <input
               type='number'
+              min='0'
               placeholder="Low Stock Threshold"
               name="itemthreshold"
               value={this.state.itemthreshold}
