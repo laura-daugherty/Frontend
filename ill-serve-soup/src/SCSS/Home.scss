@@ -1,0 +1,16 @@
+@import './variables.scss';
+
+.home-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.log-container {
+  height: 500px;
+  width: 50%;
+  background-color: $color-two;
+  border: 2px solid $color-three;
+  .log-button {
+    border: 3px solid blue
+  }
+}
