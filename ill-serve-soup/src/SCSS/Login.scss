@@ -67,7 +67,7 @@
   width: 70%;
   cursor: pointer;
   @include body-font;
-  color: inherit;
+  color: darken($color-three, 20%);
   border-radius: 5px;
   font-size: 1.2rem;
 }
@@ -110,6 +110,9 @@
   }
 }
 
+
+////ITEM FORM
+
 .item-bg {
   // background-image: "./src/Images/bowl-bread-container-1707269.jpg";
   background-color: $color-two;
@@ -148,4 +151,39 @@
       color: inherit;
       background-color: lighten($color-one, 10%);
   }
+}
+.item-form-button {
+  @include button-reset;
+  text-align: center;
+  background-color: darken($color-two, 10%);
+  width: 150px;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin: 5px;
+  padding: 5px;
+}
+.item-form-button:hover {
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: lighten($color-one, 10%);
+}
+.item-form-button:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: darken($color-two, 10%);
 }

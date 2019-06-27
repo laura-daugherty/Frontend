@@ -34,7 +34,7 @@ class ItemForm extends React.Component {
                     required
                   />
                 </div>
-                <div>
+                <div className="category-dropdown">
                   <select name='itemcategory' value={this.state.itemcategory} onChange={this.handleChanges} required>
                     <option value='' disabled>Item Category</option>
                     <option value='produce'>Produce</option>
@@ -92,8 +92,8 @@ class ItemForm extends React.Component {
                   />
                 </div>
               </div>         
-              <div className="login-div">
-                <p>Save</p>
+              <div>
+                <button className="item-form-button" onSubmit={this.submitHandler}>Save</button>
               </div>
             </form>
           </div>

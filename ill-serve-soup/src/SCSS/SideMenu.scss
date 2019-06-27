@@ -21,6 +21,11 @@
       background: lighten($color-one, 10%);
       color: darken($color-three, 20%);;
     }
+    &:active {
+      transform: translateY(1px);
+      filter: saturate(150%);
+      background-color: darken($color-two, 10%);
+    }
   }
 
   .selected {
