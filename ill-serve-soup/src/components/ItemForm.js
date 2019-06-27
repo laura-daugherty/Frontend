@@ -93,8 +93,10 @@ class ItemForm extends React.Component {
                 </div>
               </div>         
               <div className="item-button-wrapper">
-                <Link className="item-form-button Link"to="/itemPage">Back to the Pantry</Link>
-                <button className="item-form-button" onSubmit={this.submitHandler}>Save</button>
+                <button className="item-form-button" onSubmit={this.submitHandler}>Save Item</button>
+                <button className="item-form-button" onClick={this.goBack}>Back to the Pantry</button>
+
+                {/* <Link className="item-form-button Link"to="/itemPage">Back to the Pantry</Link> */}
               </div>
             </form>
           </div>
@@ -140,6 +142,11 @@ class ItemForm extends React.Component {
     })
     // this.props.history.push("/itemList")
   };
+
+  goBack = e => {
+    e.preventDefault();
+    this.props.history.push("/itemList");
+  }
 }
 
 const mapStateToProps = state => ({

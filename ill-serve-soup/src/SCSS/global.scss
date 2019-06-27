@@ -10,6 +10,7 @@ body {
   // -moz-osx-font-smoothing: grayscale;
   background-color: $color-one;
   @include body-font;
+  color: darken($color-three, 35%)
 }
 
 // .App {
