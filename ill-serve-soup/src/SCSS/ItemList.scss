@@ -10,14 +10,13 @@
 
 .items-wrapper {
   display: flex;
-  
+  flex-flow: wrap;
 }
 
 .add-link-div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
   @include button-reset;
   text-align: center;
   background-color: darken($color-two, 10%);
@@ -27,6 +26,8 @@
   border-radius: 5px;
   font-size: 4rem;
   margin: 20px;
+  width: 200px;
+  height: 250px;
 }
 .add-link-div:hover {
   @include button-reset;

@@ -41,10 +41,10 @@ class ItemList extends React.Component {
           <div className="sideMenu-wrap">
             <SideMenu searchCategory={this.props.searchCategory} setFilter={this.setFilter} categories={this.state.categories}/>
           </div>
+          <div className="items-wrapper">
           <div className="add-link-div">
             <Link className="Link" to='/itemForm'>+</Link>
           </div>
-          <div className="items-wrapper">
             {this.props.fetchingItems && <div className="loader">Checking Pantry...</div>}
             {this.props.items.length === 0 && <div className="no-items">Your Pantry is empty! Add an item to get started.</div>} 
             {displayItems.length > 0 && displayItems.map(item => 

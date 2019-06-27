@@ -35,10 +35,24 @@
 }
 
 .item-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: lighten($color-three, 10%);
   margin: 20px;
   border-radius: 5px;
   text-align: center;
   width: 200px;
+  height: 250px;
   @include body-font;
+}
+.card-body {
+  text-align: center;
+}
+
+.item-category {
+  border: 2px solid darken($color-two, 10%);
+  color: darken($color-two, 10%);
+  width: 120px;
+  margin: 20px auto;
 }
