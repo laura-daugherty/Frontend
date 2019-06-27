@@ -14,7 +14,16 @@
     border-radius: 5px;
     color: #6CB043;
     cursor: pointer;
+
+    &:hover {
+      background: darken($color-two, 10%);
+      color: white;
+    }
   }
 
+  .selected {
+    background: darken($color-two, 10%);
+    color: white;
+  }
  
 }

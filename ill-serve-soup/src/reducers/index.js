@@ -68,6 +68,7 @@ export const reducer = (state = initialState, action) => {
         deletingItem: false,
         addingItem: false,
         updatingItem: false,
+        searchCategory: 'all'
       }
     case REGISTER_START:
       return {
