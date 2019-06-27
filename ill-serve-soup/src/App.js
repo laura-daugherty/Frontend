@@ -33,14 +33,15 @@ class App extends React.Component {
       <div className="App">
         <header className='App-header'>
           <div className="logo">
-            <img src="./Images/logo.png" alt="Serve Soup Logo"/>
+            <img src="src/Images/logo.jpg" alt="Smiley face" height="42" width="42"/>
+
           </div>
           <h1>
             I'll Serve Soup
           </h1>
 
           {/*profile icon? or anything to put in navbar*/}
-          {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
+          {this.props.isLoggedIn && <button className="item-form-button" onClick={this.logout}>Logout</button>}
         </header>
         
         {/* //Routes// */}

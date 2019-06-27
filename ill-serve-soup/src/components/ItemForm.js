@@ -92,7 +92,8 @@ class ItemForm extends React.Component {
                   />
                 </div>
               </div>         
-              <div>
+              <div className="item-button-wrapper">
+                <Link className="item-form-button Link"to="/itemPage">Back to the Pantry</Link>
                 <button className="item-form-button" onSubmit={this.submitHandler}>Save</button>
               </div>
             </form>
@@ -137,7 +138,7 @@ class ItemForm extends React.Component {
       itemthreshold: '',
       itemcategory: ''
     })
-    this.props.history.push("/itemList")
+    // this.props.history.push("/itemList")
   };
 }
 

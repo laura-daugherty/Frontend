@@ -70,32 +70,45 @@
   color: darken($color-three, 20%);
   border-radius: 5px;
   font-size: 1.2rem;
-}
-.login-div:hover {
-  @include button-reset;
-  text-align: center;
-  width: 70%;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: lighten($color-one, 10%);
-}
-.login-div:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
-  @include button-reset;
-  text-align: center;
-  width: 70%;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: darken($color-two, 10%);
+  &:hover {
+    @include button-reset;
+    text-align: center;
+    width: 70%;
+    cursor: pointer;
+    @include body-font;
+    color: darken($color-three, 20%);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: lighten($color-one, 10%);
+  }
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+    @include button-reset;
+    text-align: center;
+    width: 70%;
+    cursor: pointer;
+    @include body-font;
+    color: inherit;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: darken($color-two, 10%);
+  }
 }
 
+.logging-div {
+    transform: translateY(1px);
+    filter: saturate(150%);
+    @include button-reset;
+    text-align: center;
+    width: 70%;
+    cursor: pointer;
+    @include body-font;
+    color: inherit;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    background-color: lighten($color-one, 10%);
+}
 .input-wrapper {
   display: flex;
   flex-flow: column;
@@ -152,16 +165,28 @@
       background-color: lighten($color-one, 10%);
   }
 }
+
+.item-button-wrapper {
+  display: flex;
+  flex-flow: column;
+  height: 150px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.Link {
+  text-decoration: none;
+  font-size: 1rem;
+}
 .item-form-button {
   @include button-reset;
   text-align: center;
   background-color: darken($color-two, 10%);
-  width: 150px;
+  width: 200px;
   cursor: pointer;
   @include body-font;
   color: inherit;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 5px;
   padding: 5px;
 }

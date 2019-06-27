@@ -1,7 +1,10 @@
 @import './variables.scss';
 
 .App-header {
+  display: flex;
   height: 200px;
-  background-color: $color-three;
+  background-color: $color-one;
   @include header-font;
+  color: $color-three;
+  font-size: 2rem;
 }

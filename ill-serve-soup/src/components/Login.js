@@ -52,7 +52,7 @@ class Login extends React.Component {
               </div>
               <div className="login-div" onClick={this.login}>
                 {this.props.loggingIn === true ? (
-                  <div>
+                  <div className="logging-div">
                     Logging In...
                   </div>
                 ) : (
