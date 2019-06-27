@@ -33,7 +33,7 @@ class ItemList extends React.Component {
           <Notifications items={this.props.items}/>
         </div>
 
-        <SideMenu setFilter={this.setFilter} categories={this.state.categories}/>
+        <SideMenu searchCategory={this.props.searchCategory} setFilter={this.setFilter} categories={this.state.categories}/>
         {/* 
         {this.state.activeItem && (
           <UpdateForm  updateItem={this.updateItem} activeItem={this.state.activeItem}/>
