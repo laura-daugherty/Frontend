@@ -2,14 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
-//Needed Component Imports
 import Item from "./Item"
 import Notifications from './Notifications';
 import SideMenu from './SideMenu';
-//import UpdateForm from './UpdateForm';
 
-// Needed Action Imports
-import { fetchItems, updateItem, setFilter } from "../actions";
+import { fetchItems, updateItem, setFilter, searchByName } from "../actions";
 
 class ItemList extends React.Component {
   constructor() {
@@ -21,22 +18,21 @@ class ItemList extends React.Component {
 
   render() {
     let displayItems;
-    if (this.props.searchCategory === 'all') {
-      displayItems = this.props.items;
+    if (this.props.searchName) {
+      console.log(this.props.searchName)
+      displayItems = this.props.items.filter(item => item.itemname === this.props.searchName)
     } else {
-      displayItems = this.props.items.filter(item => item.itemcategory === this.props.searchCategory)
+      if (this.props.searchCategory === 'all') {
+        displayItems = this.props.items;
+      } else {
+        displayItems = this.props.items.filter(item => item.itemcategory === this.props.searchCategory)
+      }
     }
     return (
       <div>
         <div className="notification-banner">
-          <Notifications items={this.props.items}/>
+          <Notifications searchByName={this.searchByName} items={this.props.items}/>
         </div>
-
-        {/* 
-        {this.state.activeItem && (
-          <UpdateForm  updateItem={this.updateItem} activeItem={this.state.activeItem}/>
-        )}
-        */}
         <div className="menu-item-wrap">
           <div className="sideMenu-wrap">
             <SideMenu searchCategory={this.props.searchCategory} setFilter={this.setFilter} categories={this.state.categories}/>
@@ -52,7 +48,6 @@ class ItemList extends React.Component {
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -66,45 +61,25 @@ class ItemList extends React.Component {
     event.preventDefault();
     this.props.setFilter(item);
   }
-  
-  /*
-  updateItem = (e, item) => {
-    e.preventDefault();
-    console.log(updateItem)
-    console.log(this.state)
-    this.setState({
-      activeItem: null,
-    })
-    this.props.updateItem(item);
+
+  searchByName = (event, name) => {
+    event.preventDefault();
+    this.props.searchByName(name)
   }
 
-  
-  //SET UPDATE FORM
-  setUpdateForm = (e, item) => {
-    e.preventDefault();
-    console.log("thisItem", this.props.item)
-    this.setState({ 
-      activeItem: item
-    }, () => {
-      console.log("new state", this.state)
-      // console.log("props", this.props)
-      // this.props.history.push("/UpdateForm")
-    })
-    
-  }
-  */
 }
 
 const mapStateToProps = (state) => ({
   items: state.items,
   fetchingItems: state.fetchingItems,
   error: state.error,
-  searchCategory: state.searchCategory
+  searchCategory: state.searchCategory,
+  searchName: state.searchName
 })
 
 export default connect(
   mapStateToProps,
   {
-    fetchItems, updateItem, setFilter
+    fetchItems, updateItem, setFilter, searchByName
   }
 )(ItemList);

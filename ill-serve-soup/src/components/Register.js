@@ -1,5 +1,3 @@
-//Didn't do much here - just copied over Login Form and changed names to register instead of Login
-
 import React from "react";
 import { connect } from "react-redux";
 
@@ -72,15 +70,10 @@ class Register extends React.Component {
   };
 
   register = () => {
-    //adding this.props.history as param so action creator will redirect after user is registered
     this.props.register(this.props.history, {
         username: this.state.creds.username,
         password: this.state.creds.password
-      })
-    
-      // .then(() => {
-      //   this.props.history.push("/itemList");
-      // });
+    })
   };
 }
 

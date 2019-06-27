@@ -7,14 +7,11 @@ import { logout } from './actions';
 import Login from "./components/Login";
 import ItemList from "./components/ItemList";
 import ItemForm from './components/ItemForm';
-import UpdateForm from './components/UpdateForm'
 import Register from './components/Register';
 import Home from './components/Home';
-
 import PrivateRoute from './utilities/PrivateRoute';
 
 //Style Stuff
-
 import './App.scss';
 
 class App extends React.Component {
@@ -23,9 +20,7 @@ class App extends React.Component {
     event.preventDefault();
     this.props.logout();
     this.props.history.push('/')
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userid');
+    localStorage.clear();
   }
   
   render() {
@@ -38,18 +33,13 @@ class App extends React.Component {
           <h1>
             I'll Serve Soup
           </h1>
-
-          {/*profile icon? or anything to put in navbar*/}
           {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
         </header>
-        
-        {/* //Routes// */}
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/itemList" component={ItemList} />
         <PrivateRoute exact path="/ItemForm" component={ItemForm} />
-        <PrivateRoute exact path="/UpdateForm" component={UpdateForm} />
       </div>
     );
   }

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 
-// Needed Action Imports
 import { deleteItem, setActive } from "../actions"
 
 
@@ -33,7 +32,6 @@ class Item extends React.Component {
     this.props.history.push('/itemForm')
   }
 }
-
 
 const mapStateToProps = state => {
   return {

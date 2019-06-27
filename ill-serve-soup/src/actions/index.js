@@ -1,6 +1,7 @@
 import axios from 'axios';
 import axiosWithAuth from '../utilities/axiosWithAuth';
 
+//Login actions
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -33,6 +34,7 @@ export const login = (credentials) => (dispatch) => {
     })
 }
 
+//Logout action
 export const LOGOUT = 'LOGOUT';
 
 export const logout = () => {
@@ -41,6 +43,7 @@ export const logout = () => {
   })
 }
 
+//Register actions
 export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
@@ -88,6 +91,7 @@ export const register = (history, credentials) => (dispatch) => {
     })
 }
 
+//Fetch data actions
 export const FETCH_ITEMS_START = 'FETCH_ITEMS_START';
 export const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
 export const FETCH_ITEMS_FAILURE = 'FETCH_ITEMS_FAILURE';
@@ -97,7 +101,6 @@ export const fetchItems = (username) => (dispatch) => {
     type: FETCH_ITEMS_START
   })
   axiosWithAuth().get(`https://alfonsog-kitchen.herokuapp.com/users/getuser/${username}`)
-     //is there anyway to get only the items associated with the particular username?
     .then(response => {
       console.log('fetching data success: ', response);
       const userid = response.data.userid;
@@ -126,6 +129,7 @@ export const fetchItems = (username) => (dispatch) => {
     })
 }
 
+//Add item actions
 export const ADD_ITEM_START = 'ADD_ITEM_START';
 export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
@@ -152,10 +156,11 @@ export const addItem = (item) => (dispatch) => {
   })
 }
 
+//Update item actions
 export const UPDATE_ITEM_START = 'UPDATE_ITEM_START';
 export const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 export const UPDATE_ITEM_FAILURE = 'UPDATE_ITEM_FAILURE';
-//CHANGED SPELLING OF UPDATE
+
 export const updateItem = (item) => (dispatch) => {
   dispatch({
     type: UPDATE_ITEM_START
@@ -189,6 +194,7 @@ export const updateItem = (item) => (dispatch) => {
  
 }
 
+//Delete item actions
 export const DELETE_ITEM_START = 'DELETE_ITEM_START';
 export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
@@ -225,6 +231,7 @@ export const deleteItem = (itemid) => (dispatch) => {
     })
 }
 
+//Set active item (for add or update item from)
 export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 
 export const setActive = (item) => {
@@ -234,11 +241,21 @@ export const setActive = (item) => {
   })
 }
 
+//Filter items action
 export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY';
 
 export const setFilter = (category) => {
   return ({
     type: FILTER_BY_CATEGORY,
     payload: category
+  })
+}
+
+export const SEARCH_BY_NAME = 'FILTER_BY_NAME';
+
+export const searchByName = (name) => {
+  return ({
+    type: SEARCH_BY_NAME,
+    payload: name
   })
 }

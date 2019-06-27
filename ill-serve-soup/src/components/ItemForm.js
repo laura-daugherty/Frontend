@@ -22,6 +22,7 @@ class ItemForm extends React.Component {
       <div className="item-bg"> 
         <div className="item-wrapper">
           <div className="item-form-button-wrapper">
+            <Link to='/itemList'>Back to inventory</Link>
             <form className="item-form" onSubmit={this.submitHandler}>
               <div className="item-input-wrapper">
                 <div>
@@ -49,18 +50,6 @@ class ItemForm extends React.Component {
                     <option value='miscellaneous'>Miscellaneous</option>
                   </select>
                 </div>
-                {/* 
-                <div>
-                  <input
-                    type='text'
-                    placeholder="Item Category"
-                    name="itemcategory"
-                    value={this.state.itemcategory}
-                    onChange={this.handleChanges}
-                    required
-                  />
-                </div>
-                */}
                 <div>
                   <input
                     type='number'
@@ -79,6 +68,7 @@ class ItemForm extends React.Component {
                     name="itemunit"
                     value={this.state.itemunit}
                     onChange={this.handleChanges}
+                    required
                   />
                 </div>
                 <div>
@@ -89,11 +79,12 @@ class ItemForm extends React.Component {
                     name="itemthreshold"
                     value={this.state.itemthreshold}
                     onChange={this.handleChanges}
+                    required
                   />
                 </div>
               </div>         
               <div>
-                <button className="item-form-button" onSubmit={this.submitHandler}>Save</button>
+                <button className="item-form-button" >Save</button>
               </div>
             </form>
           </div>

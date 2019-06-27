@@ -20,6 +20,7 @@ import {
   DELETE_ITEM_FAILURE,
   SET_ACTIVE_ITEM,
   FILTER_BY_CATEGORY,
+  SEARCH_BY_NAME
 } from "../actions"
 
 const initialState = {
@@ -34,6 +35,7 @@ const initialState = {
   addingItem: false,
   updatingItem: false,
   searchCategory: 'all',
+  searchName: null
 };
 
 export const reducer = (state = initialState, action) => {
@@ -68,7 +70,8 @@ export const reducer = (state = initialState, action) => {
         deletingItem: false,
         addingItem: false,
         updatingItem: false,
-        searchCategory: 'all'
+        searchCategory: 'all',
+        searchName: null
       }
     case REGISTER_START:
       return {
@@ -117,14 +120,14 @@ export const reducer = (state = initialState, action) => {
         ...state,
         addingItem: false,
         items: action.payload,
-        searchCategory: 'all'
+        searchCategory: 'all',
       }
     case ADD_ITEM_FAILURE:
       return {
         ...state,
         addingItem: false,
         error: action.payload,
-        searchCategory: 'all'
+        searchCategory: 'all',
       }
     case UPDATE_ITEM_START:
       return {
@@ -174,7 +177,13 @@ export const reducer = (state = initialState, action) => {
     case FILTER_BY_CATEGORY:
       return {
         ...state,
-        searchCategory: action.payload
+        searchCategory: action.payload,
+        searchName: null
+      }
+    case SEARCH_BY_NAME:
+      return {
+        ...state,
+        searchName: action.payload
       }
     default:
       return state;
