@@ -10,6 +10,8 @@ import ItemForm from './components/ItemForm';
 import Register from './components/Register';
 import Home from './components/Home';
 import PrivateRoute from './utilities/PrivateRoute';
+import logo from './images/logo.png';
+import profile from './images/Laura.png';
 
 //Style Stuff
 import './App.scss';
@@ -28,12 +30,16 @@ class App extends React.Component {
       <div className="App">
         <header className='App-header'>
           <div className="logo">
-            <img src="./Images/logo.png" alt="Serve Soup Logo"/>
+            <img src={logo} alt="Serve Soup Logo"/>
+            <h1>
+              I'll Serve Soup
+            </h1>
           </div>
-          <h1>
-            I'll Serve Soup
-          </h1>
-          {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
+          {this.props.isLoggedIn && 
+            <div className='profile'>
+              <div onClick={this.logout}>Logout</div>  
+              <img src={profile} alt='profile icon' />
+            </div>}
         </header>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />

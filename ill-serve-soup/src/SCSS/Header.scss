@@ -1,7 +1,45 @@
 @import './variables.scss';
 
 .App-header {
-  height: 200px;
+  width: 100%;
+  display: flex;
   background-color: $color-three;
   @include header-font;
+  justify-content: space-between;
+  
+  .logo {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      width: 80px;
+    }
+
+    h1 {
+      margin: 0 20px;
+    }
+  }
+
+  .profile {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    div {
+      font-size: 1.4rem;
+      margin: 0 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    img {
+      width: 80px;
+    }
+  }
 }
