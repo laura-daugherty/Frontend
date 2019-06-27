@@ -11,7 +11,7 @@ import Register from './components/Register';
 import Home from './components/Home';
 import PrivateRoute from './utilities/PrivateRoute';
 import logo from './Images/logo.jpg';
-import profile from './Images/Laura.png';
+import profile from './Images/profile.svg';
 
 //Style Stuff
 import './App.scss';
