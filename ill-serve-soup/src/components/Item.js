@@ -11,10 +11,13 @@ class Item extends React.Component {
     return (
       <div className="item-card">
         <div className="card-body">
-          <h1>{this.props.item.itemname}</h1>
-          <p>{this.props.item.itemquantity + ' ' + this.props.item.itemunit} </p>
-          <p>Category: {this.props.item.itemcategory.split('_').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}</p>
-          <h3>{this.props.item.itemthreshold}</h3> 
+          <h2>{this.props.item.itemname[0].toUpperCase() + this.props.item.itemname.slice(1).toLowerCase()}</h2>
+          <div>{this.props.item.itemquantity + ' ' + this.props.item.itemunit.toLowerCase()}</div>
+          <div className='item-category'>{this.props.item.itemcategory.split('_').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}</div>
+        </div>
+        <div className='item-btn'>
+          <button onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</button>
+          <button onClick={(e) => this.setUpdateForm(e, this.props.item)}>Update</button>
         </div>
         <div className="item-button" onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</div>
         <div className="item-button" onClick={(e) => this.setUpdateForm(e, this.props.item)}>Update</div>
