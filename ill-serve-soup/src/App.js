@@ -10,8 +10,8 @@ import ItemForm from './components/ItemForm';
 import Register from './components/Register';
 import Home from './components/Home';
 import PrivateRoute from './utilities/PrivateRoute';
-import logo from './images/logo.png';
-import profile from './images/Laura.png';
+import logo from './Images/logo.jpg';
+import profile from './Images/Laura.png';
 
 //Style Stuff
 import './App.scss';
