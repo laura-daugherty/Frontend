@@ -58,22 +58,41 @@
 }
 
 
-.login-button {
+
+.login-div {
   @include button-reset;
   text-align: center;
   background-color: darken($color-two, 10%);
-  padding: 10px;
+  width: 70%;
   cursor: pointer;
   @include body-font;
   color: inherit;
   border-radius: 5px;
+  font-size: 1.2rem;
 }
-.login-button:hover {
+.login-div:hover {
+  @include button-reset;
+  text-align: center;
+  width: 70%;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
   background-color: lighten($color-one, 10%);
 }
-.login-button:active {
+.login-div:active {
   transform: translateY(1px);
   filter: saturate(150%);
+  @include button-reset;
+  text-align: center;
+  width: 70%;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: darken($color-two, 10%);
 }
 
 .input-wrapper {
