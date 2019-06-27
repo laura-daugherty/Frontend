@@ -1,0 +1,9 @@
+[build]
+base = "ill-serve-soup/"
+publish = "ill-serve-soup/build/"
+command = "yarn build"
+
+[redirects]
+from = "/*"
+to = "/index.html"
+status = 200
