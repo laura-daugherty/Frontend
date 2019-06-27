@@ -22,7 +22,6 @@ class ItemForm extends React.Component {
       <div className="item-bg"> 
         <div className="item-wrapper">
           <div className="item-form-button-wrapper">
-            <Link to='/itemList'>Back to inventory</Link>
             <form className="item-form" onSubmit={this.submitHandler}>
               <div className="item-input-wrapper">
                 <div>
