@@ -20,9 +20,7 @@ class App extends React.Component {
     event.preventDefault();
     this.props.logout();
     this.props.history.push('/')
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userid');
+    localStorage.clear();
   }
   
   render() {
