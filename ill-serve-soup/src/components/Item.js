@@ -16,8 +16,8 @@ class Item extends React.Component {
           <p>Category: {this.props.item.itemcategory.split('_').map(word => word[0].toUpperCase() + word.slice(1)).join(' ')}</p>
           <h3>{this.props.item.itemthreshold}</h3> 
         </div>
-        <button onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</button>
-        <button onClick={(e) => this.setUpdateForm(e, this.props.item)}>Update</button>
+        <div className="item-button" onClick={(e) => this.deleteItem(e, this.props.item.itemid)}>Delete</div>
+        <div className="item-button" onClick={(e) => this.setUpdateForm(e, this.props.item)}>Update</div>
         
       </div>
     );

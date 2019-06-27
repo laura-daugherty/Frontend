@@ -30,7 +30,7 @@ class Notifications extends React.Component {
       });
     }
     if (alerts.length === 0) {
-      alerts.push('No alert.');
+      alerts.push('Ready to Get Cooking');
     }
     this.setState({
       notifications: alerts
@@ -41,7 +41,7 @@ class Notifications extends React.Component {
     return (
       <div className='notifications-container'>
         {this.state.notifications.map((item, index) => (
-          <div className='notifications' key={index}>{item}</div>
+          <div className='low-stock' key={index}>{item}</div>
         ))}
       </div>
     );
