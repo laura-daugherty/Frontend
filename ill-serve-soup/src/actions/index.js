@@ -250,3 +250,12 @@ export const setFilter = (category) => {
     payload: category
   })
 }
+
+export const SEARCH_BY_NAME = 'FILTER_BY_NAME';
+
+export const searchByName = (name) => {
+  return ({
+    type: SEARCH_BY_NAME,
+    payload: name
+  })
+}

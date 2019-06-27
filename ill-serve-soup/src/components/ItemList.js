@@ -6,7 +6,7 @@ import Item from "./Item"
 import Notifications from './Notifications';
 import SideMenu from './SideMenu';
 
-import { fetchItems, updateItem, setFilter } from "../actions";
+import { fetchItems, updateItem, setFilter, searchByName } from "../actions";
 
 class ItemList extends React.Component {
   constructor() {
@@ -18,15 +18,20 @@ class ItemList extends React.Component {
 
   render() {
     let displayItems;
-    if (this.props.searchCategory === 'all') {
-      displayItems = this.props.items;
+    if (this.props.searchName) {
+      console.log(this.props.searchName)
+      displayItems = this.props.items.filter(item => item.itemname === this.props.searchName)
     } else {
-      displayItems = this.props.items.filter(item => item.itemcategory === this.props.searchCategory)
+      if (this.props.searchCategory === 'all') {
+        displayItems = this.props.items;
+      } else {
+        displayItems = this.props.items.filter(item => item.itemcategory === this.props.searchCategory)
+      }
     }
     return (
       <div>
         <div className="notification-banner">
-          <Notifications items={this.props.items}/>
+          <Notifications searchByName={this.searchByName} items={this.props.items}/>
         </div>
         <div className="menu-item-wrap">
           <div className="sideMenu-wrap">
@@ -56,18 +61,25 @@ class ItemList extends React.Component {
     event.preventDefault();
     this.props.setFilter(item);
   }
+
+  searchByName = (event, name) => {
+    event.preventDefault();
+    this.props.searchByName(name)
+  }
+
 }
 
 const mapStateToProps = (state) => ({
   items: state.items,
   fetchingItems: state.fetchingItems,
   error: state.error,
-  searchCategory: state.searchCategory
+  searchCategory: state.searchCategory,
+  searchName: state.searchName
 })
 
 export default connect(
   mapStateToProps,
   {
-    fetchItems, updateItem, setFilter
+    fetchItems, updateItem, setFilter, searchByName
   }
 )(ItemList);

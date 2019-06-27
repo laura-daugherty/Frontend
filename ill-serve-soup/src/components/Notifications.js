@@ -23,14 +23,23 @@ class Notifications extends React.Component {
     if (this.props.items.length > 0) {
       this.props.items.forEach(item => {
         if (item.itemquantity === 0) {
-          alerts.push(`${item.itemname[0].toUpperCase() + item.itemname.slice(1).toLowerCase()} is out of stock!`);
+          alerts.push({
+            item: item.itemname,
+            warning: `${item.itemname[0].toUpperCase() + item.itemname.slice(1).toLowerCase()} is out of stock!`
+          })
         } else if (item.itemquantity < item.itemthreshold) {
-          alerts.push(`${item.itemname[0].toUpperCase() + item.itemname.slice(1).toLowerCase()} is running low.`);
+          alerts.push({
+            item: item.itemname,
+            warning: `${item.itemname[0].toUpperCase() + item.itemname.slice(1).toLowerCase()} is running low.`
+          });
         }
       });
     }
     if (alerts.length === 0) {
-      alerts.push('Ready to Get Cooking');
+      alerts.push({
+        item: '',
+        warning: 'Ready to Get Cooking'
+      });
     }
     this.setState({
       notifications: alerts
@@ -41,7 +50,7 @@ class Notifications extends React.Component {
     return (
       <div className='notifications-container'>
         {this.state.notifications.map((item, index) => (
-          <div className='low-stock' key={index}>{item}</div>
+          <div onClick={(event) => this.props.searchByName(event, item.item)} className='low-stock' key={index}>{item.warning}</div>
         ))}
       </div>
     );
