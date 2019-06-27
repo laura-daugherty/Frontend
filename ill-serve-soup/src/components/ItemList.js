@@ -5,21 +5,27 @@ import { Link } from 'react-router-dom';
 //Needed Component Imports
 import Item from "./Item"
 import Notifications from './Notifications';
-import UpdateForm from './UpdateForm';
+import SideMenu from './SideMenu';
+//import UpdateForm from './UpdateForm';
 
 // Needed Action Imports
-import { fetchItems, updateItem } from "../actions";
+import { fetchItems, updateItem, setFilter } from "../actions";
 
 class ItemList extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: [],
-      //activeItem: null
+      categories: ['all', 'produce', 'meat', 'fish', 'dairy', 'spices', 'bar', 'canned_goods', 'dry_goods', 'supplies', 'miscellaneous']
     }
   }
 
   render() {
+    let displayItems;
+    if (this.props.searchCategory === 'all') {
+      displayItems = this.props.items;
+    } else {
+      displayItems = this.props.items.filter(item => item.itemcategory === this.props.searchCategory)
+    }
     return (
       <div>
         <Link to='/itemForm'>Add new item</Link>
@@ -27,21 +33,18 @@ class ItemList extends React.Component {
           <Notifications items={this.props.items}/>
         </div>
 
-        <div className="sidebar">
-          Sidebar
-          {/* Display <Sidebar> element here */}
-        </div>
+        <SideMenu setFilter={this.setFilter} categories={this.state.categories}/>
         {/* 
         {this.state.activeItem && (
           <UpdateForm  updateItem={this.updateItem} activeItem={this.state.activeItem}/>
         )}
         */}
-
+        
         <div className="items-wrapper">
           {this.props.fetchingItems && <div className="loader">Loading...</div>}
-          {this.props.items.length === 0 && <div>No item in the inventory</div>}
-          {this.props.items.length > 0 && this.props.items.map(item => 
-          <Item history={this.props.history} item={item} key={item.itemid}/>)}
+          {this.props.items.length === 0 && <div>No item in the inventory</div>} 
+          {displayItems.length > 0 && displayItems.map(item => 
+            <Item history={this.props.history} item={item} key={item.itemid}/>)}
         </div>
 
       </div>
@@ -53,6 +56,11 @@ class ItemList extends React.Component {
     console.log("CDM", this.props.history)
     let username = localStorage.getItem('username');
     this.props.fetchItems(username);
+  }
+
+  setFilter = (event, item) => {
+    event.preventDefault();
+    this.props.setFilter(item);
   }
   
   /*
@@ -83,15 +91,16 @@ class ItemList extends React.Component {
   */
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   items: state.items,
   fetchingItems: state.fetchingItems,
   error: state.error,
-});
+  searchCategory: state.searchCategory
+})
 
 export default connect(
   mapStateToProps,
   {
-    fetchItems, updateItem
+    fetchItems, updateItem, setFilter
   }
 )(ItemList);

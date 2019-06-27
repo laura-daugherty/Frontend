@@ -225,17 +225,20 @@ export const deleteItem = (itemid) => (dispatch) => {
     })
 }
 
-//export const SORT_ITEM_START = 'DELETE_ITEM_START';
-//export const SORT_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
-//export const SORT_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
-//this action does not need to go through API calls so not sure if we need to have all 3 actions
-export const SORT_ITEMS = 'SORT_ITEMS';
-
 export const SET_ACTIVE_ITEM = 'SET_ACTIVE_ITEM';
 
 export const setActive = (item) => {
   return ({
     type: SET_ACTIVE_ITEM,
     payload: item
+  })
+}
+
+export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY';
+
+export const setFilter = (category) => {
+  return ({
+    type: FILTER_BY_CATEGORY,
+    payload: category
   })
 }

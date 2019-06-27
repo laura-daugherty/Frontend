@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { logout } from './actions';
 
 // Components
@@ -10,7 +9,8 @@ import ItemList from "./components/ItemList";
 import ItemForm from './components/ItemForm';
 import UpdateForm from './components/UpdateForm'
 import Register from './components/Register';
-import Home from './components/Home'
+import Home from './components/Home';
+
 import PrivateRoute from './utilities/PrivateRoute';
 
 //Style Stuff
@@ -39,9 +39,8 @@ class App extends React.Component {
           {/*profile icon? or anything to put in navbar*/}
           {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
         </header>
-
+        
         {/* //Routes// */}
-
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
