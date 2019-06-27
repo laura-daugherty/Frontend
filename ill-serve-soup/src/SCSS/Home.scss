@@ -1,37 +1,5 @@
 @import './variables.scss';
 
-// .home-bg {
-//   display: flex;
-//   justify-content: center;
-//   align-content: center;
-// }
-
-// // body {
-// //   display: flex;
-// //   justify-content: center;
-// //   align-content: center;
-// // }
-// .log-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 500px;
-//   width: 500px;
-//   background-color: $color-two;
-//   border: 5px solid $color-three;
-//   border-radius: 20px;
-//   .log-button {
-//     border: 5px solid $color-three;
-//     background-color: $color-one;
-//     margin: 20px;
-//     width: 20%;
-//     text-align: center;
-//     padding: 20px;
-//     border-radius: 6px;
-//     text-decoration: none;
-//     color: darken($color-three, 30%)
-//   }
-// }
 
 .home-button-wrapper {
   display: flex;
@@ -45,11 +13,15 @@
 }
 
 .home-login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @include button-reset;
-  text-align: center;
   font-size: 1.5rem;
   text-decoration: none;
   background-color: darken($color-two, 10%);
+  width: 60%;
+  height: 15%;
   padding: 10px;
   cursor: pointer;
   @include body-font;
@@ -62,4 +34,9 @@
 .home-login-button:active {
   transform: translateY(1px);
   filter: saturate(150%);
+}
+
+.Link {
+  text-decoration: none;
+  color: inherit;
 }

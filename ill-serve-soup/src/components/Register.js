@@ -19,7 +19,7 @@ class Register extends React.Component {
           {this.props.error 
               ? (
                 <div className="axios-error">
-                  Error Logging In
+                  Error Signing Up
                 </div> 
               ) 
               : (
@@ -52,7 +52,7 @@ class Register extends React.Component {
                 </div>
               </div>
               <div className="login-div" onClick={this.register}>
-                {(this.props.registering || this.props.loggingIn) ? <div >Building Your Kitchen...</div> : <p>Sign Up</p>}
+                {(this.props.registering || this.props.loggingIn) ? <div>Building Your Kitchen...</div> : <p>Sign Up</p>}
               </div>
             </form>
           </div>
