@@ -2,6 +2,7 @@ $color-one: #FAF3DD;
 $color-two: #DCEDB9;
 $color-three: #6CB043;
 $color-error:  rgb(245, 192, 57);
+$color-link-text: darken($color-three, 20%);
 
 @mixin header-font {
   font-family: 'Crete Round', serif;
