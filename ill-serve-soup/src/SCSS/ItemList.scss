@@ -1,2 +1,63 @@
 @import './variables.scss';
 
+.menu-item-wrap {
+  display: flex;
+}
+
+.sideMenu-wrap {
+  width: 20%;
+}
+
+.items-wrapper {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.add-link-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include button-reset;
+  text-align: center;
+  background-color: darken($color-two, 10%);
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 4rem;
+  margin: 20px;
+  width: 200px;
+  height: 250px;
+}
+.add-link-div:hover {
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  background-color: lighten($color-one, 10%);
+  font-size: 4rem;
+}
+.add-link-div:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 4rem;
+  background-color: darken($color-two, 10%);
+}
+
+.notification-banner {
+  width: 100%;
+}
+
+.no-items {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  margin: 20px;
+}

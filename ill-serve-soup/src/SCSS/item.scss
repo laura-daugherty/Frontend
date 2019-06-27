@@ -1,46 +1,58 @@
 @import './variables.scss';
 
+.item-button {
+  @include button-reset;
+  text-align: center;
+  background-color: darken($color-two, 10%);
+  width: 100px;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+.item-button:hover {
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: lighten($color-one, 10%);
+}
+.item-button:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: darken($color-two, 10%);
+}
+
 .item-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 280px;
-  background: white;
-  border: 2px solid darken($color-two, 10%);
+  background-color: lighten($color-three, 10%);
   margin: 20px;
+  border-radius: 5px;
+  text-align: center;
+  width: 200px;
+  height: 250px;
+  @include body-font;
+}
+.card-body {
+  text-align: center;
+}
 
-  .card-body {
-    text-align: center;
-  }
-
-  .item-category {
-    border: 2px solid darken($color-two, 10%);
-    color: darken($color-two, 10%);
-    width: 120px;
-    margin: 20px auto;
-  }
-
-  .item-btn {
-    display: flex;
-    justify-content: center;
-
-    button {
-      @include button-reset;
-      font-size: 1.2rem;
-      text-decoration: none;
-      background-color: darken($color-two, 10%);
-      padding: 2px 6px;
-      margin: 10px;
-      outline: none;
-      cursor: pointer;
-      @include body-font;
-      color: inherit;
-      border: 2px solid darken($color-two, 10%);
-      border-radius: 5px;
-
-      &:hover {
-        background-color: lighten($color-one, 10%);
-      }
-    }
-  }
+.item-category {
+  border: 2px solid darken($color-two, 10%);
+  color: darken($color-two, 10%);
+  width: 120px;
+  margin: 20px auto;
 }

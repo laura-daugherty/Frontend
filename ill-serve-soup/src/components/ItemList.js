@@ -28,25 +28,29 @@ class ItemList extends React.Component {
     }
     return (
       <div>
-        <Link to='/itemForm'>Add new item</Link>
         <div className="notification-banner">
           <Notifications items={this.props.items}/>
         </div>
 
-        <SideMenu searchCategory={this.props.searchCategory} setFilter={this.setFilter} categories={this.state.categories}/>
         {/* 
         {this.state.activeItem && (
           <UpdateForm  updateItem={this.updateItem} activeItem={this.state.activeItem}/>
         )}
         */}
-        
-        <div className="items-wrapper">
-          {this.props.fetchingItems && <div className="loader">Loading...</div>}
-          {this.props.items.length === 0 && <div>No item in the inventory</div>} 
-          {displayItems.length > 0 && displayItems.map(item => 
-            <Item history={this.props.history} item={item} key={item.itemid}/>)}
+        <div className="menu-item-wrap">
+          <div className="sideMenu-wrap">
+            <SideMenu searchCategory={this.props.searchCategory} setFilter={this.setFilter} categories={this.state.categories}/>
+          </div>
+          <div className="items-wrapper">
+          <div className="add-link-div">
+            <Link className="Link" to='/itemForm'>+</Link>
+          </div>
+            {this.props.fetchingItems && <div className="loader">Checking Pantry...</div>}
+            {this.props.items.length === 0 && <div className="no-items">Your Pantry is empty! Add an item to get started.</div>} 
+            {displayItems.length > 0 && displayItems.map(item => 
+              <Item history={this.props.history} item={item} key={item.itemid}/>)}
+          </div>
         </div>
-
       </div>
 
     )

@@ -1,0 +1,16 @@
+@import './variables.scss';
+
+.low-stock {
+  @include header-font;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 20px, 10px;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: darken($color-error, 10%);
+  color: $color-one;
+}
