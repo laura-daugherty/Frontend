@@ -14,21 +14,10 @@ class Register extends React.Component {
  }
   render() {
     return (
-      <div className="login-bg">
       <div className="login-wrapper">
-        {this.props.error ? 
-          <div className="axios-error">
-            Error Signing Up
-          </div> 
-          : 
-          <div className="axios-alert">
-            Enter Your Information
-          </div>}
-        <div className="form-button-wrapper">
-
-        <form  className="login-form">
-        <div className="input-wrapper">
-          <div className="input-holder">
+        <form>
+          <img src="" alt="Logo" />
+          <div>
             <input
               placeholder="username"
               name="username"
@@ -37,7 +26,7 @@ class Register extends React.Component {
               required
             />
           </div>
-          <div className="input-holder">
+          <div>
             <input
               type="password"
               placeholder="password"
@@ -46,25 +35,16 @@ class Register extends React.Component {
               onChange={this.handleChanges}
               required
             />
+            {this.props.error && <div>NO GOOD</div>}
           </div>
-        
-
-            {/* {this.props.error && <div>NO GOOD</div>} */}
-          </div>
-          <div className="login-button-wrap">
-            <button className="login-button" onClick={this.register}>
+          <div>
+            <div className="login-button" onClick={this.register}>
 
               {/* Not sure if we still need this  */}
-              {this.props.registering || this.props.loggingIn 
-                ? <div>
-                    Building Your Kitchen...
-                  </div> : 
-                  <>Sign Up</>}
-            </button>
+              {this.props.registering || this.props.loggingIn ? <div>PROCESSING</div> : <h3>GO</h3>}
+            </div>
           </div>
         </form>
-        </div>
-      </div>
       </div>
     );
   }
