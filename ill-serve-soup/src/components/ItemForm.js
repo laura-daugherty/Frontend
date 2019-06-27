@@ -16,7 +16,6 @@ class ItemForm extends React.Component {
     };
   }
   
-
   render() {
     return (
       <div> 
@@ -47,18 +46,6 @@ class ItemForm extends React.Component {
               <option value='miscellaneous'>Miscellaneous</option>
             </select>
           </div>
-          {/* 
-          <div>
-            <input
-              type='text'
-              placeholder="Item Category"
-              name="itemcategory"
-              value={this.state.itemcategory}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          */}
           <div>
             <input
               type='number'
@@ -77,6 +64,7 @@ class ItemForm extends React.Component {
               name="itemunit"
               value={this.state.itemunit}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
@@ -87,6 +75,7 @@ class ItemForm extends React.Component {
               name="itemthreshold"
               value={this.state.itemthreshold}
               onChange={this.handleChanges}
+              required
             />
           </div>
           <div>
@@ -124,7 +113,6 @@ class ItemForm extends React.Component {
     } else {
       this.props.addItem(newItem);
     }
-    //reset form after item was added
     this.setState({
       itemname: '',
       itemquantity: '',

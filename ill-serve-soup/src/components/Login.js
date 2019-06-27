@@ -11,7 +11,6 @@ class Login extends React.Component {
   },
  }
   render() {
-    console.log("loginFormProps", this.props)
     return (
       <div className="login-bg">
         <div className="login-wrapper">
@@ -77,7 +76,6 @@ class Login extends React.Component {
   };
 
   login = () => {
-    console.log("loginFunctionProps", this.props)
     this.props
       .login({
         username: this.state.creds.username,
@@ -88,9 +86,6 @@ class Login extends React.Component {
           this.props.history.push("/itemList");
         }
       })
-      // .then(() => {
-      //   this.props.history.push("/itemList");
-      // });
   };
 }
 

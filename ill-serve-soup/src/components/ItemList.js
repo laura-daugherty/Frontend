@@ -2,13 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
-//Needed Component Imports
 import Item from "./Item"
 import Notifications from './Notifications';
 import SideMenu from './SideMenu';
-//import UpdateForm from './UpdateForm';
 
-// Needed Action Imports
 import { fetchItems, updateItem, setFilter } from "../actions";
 
 class ItemList extends React.Component {
@@ -31,12 +28,6 @@ class ItemList extends React.Component {
         <div className="notification-banner">
           <Notifications items={this.props.items}/>
         </div>
-
-        {/* 
-        {this.state.activeItem && (
-          <UpdateForm  updateItem={this.updateItem} activeItem={this.state.activeItem}/>
-        )}
-        */}
         <div className="menu-item-wrap">
           <div className="sideMenu-wrap">
             <SideMenu searchCategory={this.props.searchCategory} setFilter={this.setFilter} categories={this.state.categories}/>
@@ -52,7 +43,6 @@ class ItemList extends React.Component {
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -66,33 +56,6 @@ class ItemList extends React.Component {
     event.preventDefault();
     this.props.setFilter(item);
   }
-  
-  /*
-  updateItem = (e, item) => {
-    e.preventDefault();
-    console.log(updateItem)
-    console.log(this.state)
-    this.setState({
-      activeItem: null,
-    })
-    this.props.updateItem(item);
-  }
-
-  
-  //SET UPDATE FORM
-  setUpdateForm = (e, item) => {
-    e.preventDefault();
-    console.log("thisItem", this.props.item)
-    this.setState({ 
-      activeItem: item
-    }, () => {
-      console.log("new state", this.state)
-      // console.log("props", this.props)
-      // this.props.history.push("/UpdateForm")
-    })
-    
-  }
-  */
 }
 
 const mapStateToProps = (state) => ({

@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, withRouter } from "react-router-dom";
 import { composeWithDevTools } from "redux-devtools-extension";
-
-
 import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 

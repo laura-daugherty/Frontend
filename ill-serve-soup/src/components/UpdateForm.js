@@ -1,3 +1,6 @@
+/*
+This is working fine but we ended up using ItemForm to add and update item to simplify things
+
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,13 +11,6 @@ class UpdateForm extends React.Component {
   constructor(props) {
     super(props);
     console.log(props)
-    /*
-    const activeItem = this.props.activeItem
-    this.state = {}
-    if (activeItem) {
-      this.state = {...this.props.activeItem}
-    }
-    */
     this.state = {
       itemname: '',
       itemquantity: '',
@@ -23,13 +19,6 @@ class UpdateForm extends React.Component {
       itemcategory: ''
     }
   }
-  // state = {
-  //   itemname: this.props.activeItem.itemname,
-  //   itemquantity: '',
-  //   itemunit: '',
-  //   itemthreshold: '',
-  //   itemcategory: ''
-  // };
 
   render() {
     console.log("state", this.state)
@@ -121,21 +110,6 @@ class UpdateForm extends React.Component {
     }
     this.setState({ [e.target.name]: value });
   };
-
-  // updateItem = e => {
-  //   console.log("update props", this.props)
-  //   console.log("update state", this.state)
-  //   e.preventDefault();
-  //   const updatedItem = {
-  //     itemname: this.state.itemname,
-  //     itemquantity: this.state.itemquantity,
-  //     itemunit: this.state.itemunit,
-  //     itemthreshold: this.state.itemthreshold,
-  //     itemcategory: this.state.itemcategory
-  //   };
-  //   console.log("updatedItem", updatedItem)
-  //   this.props.updateItem(updatedItem);
-  // };
   updateHandler = (e) => {
     e.preventDefault();
     let updatedItem = {...this.state}
@@ -157,6 +131,8 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    
+    updateItem
   }
 )(UpdateForm);
+
+*/
