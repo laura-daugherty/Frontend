@@ -24,61 +24,65 @@ class UpdateForm extends React.Component {
     console.log("state", this.state)
     return (
       <div> 
-        <Link to='/itemList'>Back to inventory</Link>
         <form className="item-form">
-          <div>
-            <input
-              type='text'
-              placeholder="Item Name"
-              name="itemname"
-              value={this.state.itemname}
-              onChange={this.handleChanges}
-              required
-            />
+          <div className="input-wrapper">
+            <div>
+              <input>
+                  type='text'
+                  placeholder="Item Name"
+                  name="itemname"
+                  value={this.state.itemname}
+                  onChange={this.handleChanges}
+                  required
+                />
+              </input>
+            </div>
+            <div>
+              <input
+                type='text'
+                placeholder="Item Category"
+                name="itemcategory"
+                value={this.state.itemcategory}
+                onChange={this.handleChanges}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type='number'
+                placeholder="Item Quantity"
+                name="itemquantity"
+                value={this.state.itemquantity}
+                onChange={this.handleChanges}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type='text'
+                placeholder="Item Unit"
+                name="itemunit"
+                value={this.state.itemunit}
+                onChange={this.handleChanges}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type='number'
+                placeholder="Low Stock Threshold"
+                name="itemthreshold"
+                value={this.state.itemthreshold}
+                onChange={this.handleChanges}
+                required
+              />
+            </div>
           </div>
-          <div>
-            <input
-              type='text'
-              placeholder="Item Category"
-              name="itemcategory"
-              value={this.state.itemcategory}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type='number'
-              placeholder="Item Quantity"
-              name="itemquantity"
-              value={this.state.itemquantity}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type='text'
-              placeholder="Item Unit"
-              name="itemunit"
-              value={this.state.itemunit}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type='number'
-              placeholder="Low Stock Threshold"
-              name="itemthreshold"
-              value={this.state.itemthreshold}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
+
           <div>
             <div onClick={this.updateHandler}>
               <h3>Update Your Item</h3>
+              <Link to='/itemList'>Back to inventory</Link>
             </div>
           </div>
         </form>

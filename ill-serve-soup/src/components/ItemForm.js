@@ -16,72 +16,79 @@ class ItemForm extends React.Component {
     };
   }
   
+
   render() {
     return (
-      <div> 
-        <Link to='/itemList'>Back to inventory</Link>
-        <form className="item-form" onSubmit={this.submitHandler}>
-          <div>
-            <input
-              type='text'
-              placeholder="Item Name"
-              name="itemname"
-              value={this.state.itemname}
-              onChange={this.handleChanges}
-              required
-            />
+      <div className="item-bg"> 
+        <div className="item-wrapper">
+          <div className="item-form-button-wrapper">
+            <Link to='/itemList'>Back to inventory</Link>
+            <form className="item-form" onSubmit={this.submitHandler}>
+              <div className="item-input-wrapper">
+                <div>
+                  <input
+                    type='text'
+                    placeholder="Item Name"
+                    name="itemname"
+                    value={this.state.itemname}
+                    onChange={this.handleChanges}
+                    required
+                  />
+                </div>
+                <div className="category-dropdown">
+                  <select name='itemcategory' value={this.state.itemcategory} onChange={this.handleChanges} required>
+                    <option value='' disabled>Item Category</option>
+                    <option value='produce'>Produce</option>
+                    <option value='meat'>Meat</option>
+                    <option value='fish'>Fish</option>
+                    <option value='dairy'>Dairy</option>
+                    <option value='spices'>Spices</option>
+                    <option value='bar'>Bar</option>
+                    <option value='canned_goods'>Canned Goods</option>
+                    <option value='dry_goods'>Dry Goods</option>
+                    <option value='supplies'>Supplies</option>
+                    <option value='miscellaneous'>Miscellaneous</option>
+                  </select>
+                </div>
+                <div>
+                  <input
+                    type='number'
+                    min='0'
+                    placeholder="Item Quantity"
+                    name="itemquantity"
+                    value={this.state.itemquantity}
+                    onChange={this.handleChanges}
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type='text'
+                    placeholder="Item Unit"
+                    name="itemunit"
+                    value={this.state.itemunit}
+                    onChange={this.handleChanges}
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type='number'
+                    min='0'
+                    placeholder="Low Stock Threshold"
+                    name="itemthreshold"
+                    value={this.state.itemthreshold}
+                    onChange={this.handleChanges}
+                    required
+                  />
+                </div>
+              </div>         
+              <div>
+                <button className="item-form-button" >Save</button>
+              </div>
+            </form>
           </div>
-          <div>
-            <select name='itemcategory' value={this.state.itemcategory} onChange={this.handleChanges} required>
-              <option value='' disabled>Item Category</option>
-              <option value='produce'>Produce</option>
-              <option value='meat'>Meat</option>
-              <option value='fish'>Fish</option>
-              <option value='dairy'>Dairy</option>
-              <option value='spices'>Spices</option>
-              <option value='bar'>Bar</option>
-              <option value='canned_goods'>Canned Goods</option>
-              <option value='dry_goods'>Dry Goods</option>
-              <option value='supplies'>Supplies</option>
-              <option value='miscellaneous'>Miscellaneous</option>
-            </select>
-          </div>
-          <div>
-            <input
-              type='number'
-              min='0'
-              placeholder="Item Quantity"
-              name="itemquantity"
-              value={this.state.itemquantity}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type='text'
-              placeholder="Item Unit"
-              name="itemunit"
-              value={this.state.itemunit}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type='number'
-              min='0'
-              placeholder="Low Stock Threshold"
-              name="itemthreshold"
-              value={this.state.itemthreshold}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <button>Save</button>
-          </div>
-        </form>
+        </div>
       </div>
     )
   }
@@ -113,6 +120,7 @@ class ItemForm extends React.Component {
     } else {
       this.props.addItem(newItem);
     }
+    //reset form after item was added
     this.setState({
       itemname: '',
       itemquantity: '',
@@ -120,6 +128,7 @@ class ItemForm extends React.Component {
       itemthreshold: '',
       itemcategory: ''
     })
+    this.props.history.push("/itemList")
   };
 }
 
