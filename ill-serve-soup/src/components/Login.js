@@ -13,43 +13,53 @@ class Login extends React.Component {
   render() {
     console.log("loginFormProps", this.props)
     return (
-      <div className="login-wrapper">
-        <form>
-          <img src="" alt="Logo" />
-          <div>
-            <input
-              placeholder="username"
-              name="username"
-              value={this.state.creds.username}
-              onChange={this.handleChanges}
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="password"
-              name="password"
-              value={this.state.creds.password}
-              onChange={this.handleChanges}
-              required
-            />
-            {this.props.error &&  <div>NO GOOD</div>}
-          </div>
-          <div>
-            <div className="login-button" onClick={this.login}>
-              {this.props.loggingIn === true ? (
-                <div>
-                  PROCESSING
+      <div className="login-bg">
+        <div className="login-wrapper">
+        {this.props.error ? 
+          <div className="axios-error">
+            Invalid Login!
+          </div> 
+          : 
+          <div className="axios-alert">
+            Enter Your Information
+          </div>}
+        <div className="form-button-wrapper">
+          <form className="login-form">
+            <div className="input-wrapper">
+              <div className="input-holder">
+                  <input
+                    placeholder="username"
+                    name="username"
+                    value={this.state.creds.username}
+                    onChange={this.handleChanges}
+                    required
+                  />
                 </div>
-              ) : (
-                <h3>GO</h3>
-              )}
+                <div className="input-holder">
+                  <input
+                    type="password"
+                    placeholder="password"
+                    name="password"
+                    value={this.state.creds.password}
+                    onChange={this.handleChanges}
+                    required
+                  />
+              </div>
             </div>
-            <i className="fas fa-sign-in-alt" />
+            <div className="login-button-wrap">
+              <button className="login-button" onClick={this.login}>
+                {this.props.loggingIn === true ? (
+                  <div >
+                    Logging In...
+                  </div>
+                ) : (
+                  <>Log In</>
+                )}
+              </button>
+            </div>
+          </form>
           </div>
-        </form>
-        <div className="login-splash" />
+        </div>
       </div>
     );
   }

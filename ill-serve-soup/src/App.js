@@ -34,8 +34,11 @@ class App extends React.Component {
         <header className='App-header'>
           <div className="logo">
             <img src="./Images/logo.png" alt="Serve Soup Logo"/>
-            <img src="./src/Images/Laura.png" alt="Laura's face"/>
           </div>
+          <h1>
+            I'll Serve Soup
+          </h1>
+
           {/*profile icon? or anything to put in navbar*/}
           {this.props.isLoggedIn && <button onClick={this.logout}>Logout</button>}
         </header>
