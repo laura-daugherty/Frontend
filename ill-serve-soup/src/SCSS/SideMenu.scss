@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .sidemenu-container {
-  background: $color-two;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,21 +9,28 @@
   .sidemenu-btn {
     text-align: center;
     width: 80%;
-    background: white;
+    background: darken($color-two, 10%);
     border: 2px solid #6CB043;
     border-radius: 5px;
-    color: #6CB043;
+    color: darken($color-three, 20%);
     cursor: pointer;
+    margin: 5px;
+    padding: 3px;
 
     &:hover {
-      background: darken($color-two, 10%);
-      color: white;
+      background: lighten($color-one, 10%);
+      color: darken($color-three, 20%);;
+    }
+    &:active {
+      transform: translateY(1px);
+      filter: saturate(150%);
+      background-color: darken($color-two, 10%);
     }
   }
 
   .selected {
-    background: darken($color-two, 10%);
-    color: white;
+    background: lighten($color-one, 10%);
+    color: darken($color-three, 20%);
   }
  
 }

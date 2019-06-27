@@ -16,6 +16,7 @@
     width: 400px;
     background-color: $color-one;
     border: 2px solid $color-three;
+    border-radius: 8px;
     .login-form {
       display: flex;
       flex-flow: column;
@@ -66,7 +67,7 @@
   width: 70%;
   cursor: pointer;
   @include body-font;
-  color: inherit;
+  color: darken($color-three, 20%);
   border-radius: 5px;
   font-size: 1.2rem;
 }
@@ -107,4 +108,82 @@
       color: inherit;
       background-color: lighten($color-one, 10%);
   }
+}
+
+
+////ITEM FORM
+
+.item-bg {
+  // background-image: "./src/Images/bowl-bread-container-1707269.jpg";
+  background-color: $color-two;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -webkit-fill-available;
+  .item-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items:center;
+    height: 400px;
+    width: 400px;
+    background-color: $color-one;
+    border: 2px solid $color-three;
+    border-radius: 8px;
+    .item-form {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      height: 400px;
+      justify-content: space-evenly;
+    }
+  }
+}
+.item-input-wrapper {
+  display: flex;
+  flex-flow: column;
+  height: 200px;
+  justify-content: space-evenly;
+  input {
+      padding: 0;
+      border: none;
+      font: inherit;
+      color: inherit;
+      background-color: lighten($color-one, 10%);
+  }
+}
+.item-form-button {
+  @include button-reset;
+  text-align: center;
+  background-color: darken($color-two, 10%);
+  width: 150px;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin: 5px;
+  padding: 5px;
+}
+.item-form-button:hover {
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: lighten($color-one, 10%);
+}
+.item-form-button:active {
+  transform: translateY(1px);
+  filter: saturate(150%);
+  @include button-reset;
+  text-align: center;
+  cursor: pointer;
+  @include body-font;
+  color: inherit;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: darken($color-two, 10%);
 }

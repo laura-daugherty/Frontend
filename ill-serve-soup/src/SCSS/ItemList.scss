@@ -20,14 +20,15 @@
   @include button-reset;
   text-align: center;
   background-color: darken($color-two, 10%);
+  border: 2px solid #6CB043;
   cursor: pointer;
   @include body-font;
-  color: inherit;
+  color: darken($color-three, 20%);
   border-radius: 5px;
   font-size: 4rem;
   margin: 20px;
   width: 200px;
-  height: 250px;
+  height: 280px;
 }
 .add-link-div:hover {
   @include button-reset;
@@ -35,6 +36,7 @@
   cursor: pointer;
   @include body-font;
   color: inherit;
+  border: 2px solid #6CB043;
   background-color: lighten($color-one, 10%);
   font-size: 4rem;
 }

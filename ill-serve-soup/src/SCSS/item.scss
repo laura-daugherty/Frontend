@@ -10,6 +10,7 @@
   color: inherit;
   border-radius: 5px;
   font-size: 1.2rem;
+  margin: 5px;
 }
 .item-button:hover {
   @include button-reset;
@@ -43,7 +44,7 @@
   border-radius: 5px;
   text-align: center;
   width: 200px;
-  height: 250px;
+  height: 280px;
   @include body-font;
 }
 .card-body {
@@ -51,8 +52,8 @@
 }
 
 .item-category {
-  border: 2px solid darken($color-two, 10%);
-  color: darken($color-two, 10%);
+  border: 2px solid lighten($color-two, 10%);
+  color: lighten($color-two, 10%);
   width: 120px;
   margin: 20px auto;
 }
