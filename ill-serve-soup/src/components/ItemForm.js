@@ -22,7 +22,6 @@ class ItemForm extends React.Component {
       <div className="item-bg"> 
         <div className="item-wrapper">
           <div className="item-form-button-wrapper">
-            <Link to='/itemList'>Back to inventory</Link>
             <form className="item-form" onSubmit={this.submitHandler}>
               <div className="item-input-wrapper">
                 <div>
@@ -83,8 +82,11 @@ class ItemForm extends React.Component {
                   />
                 </div>
               </div>         
-              <div>
-                <button className="item-form-button" >Save</button>
+              <div className="item-button-wrapper">
+                <button className="item-form-button" onSubmit={this.submitHandler}>Save Item</button>
+                <button className="item-form-button" onClick={this.goBack}>Back to the Pantry</button>
+
+                {/* <Link className="item-form-button Link"to="/itemPage">Back to the Pantry</Link> */}
               </div>
             </form>
           </div>
@@ -128,8 +130,13 @@ class ItemForm extends React.Component {
       itemthreshold: '',
       itemcategory: ''
     })
-    this.props.history.push("/itemList")
+    // this.props.history.push("/itemList")
   };
+
+  goBack = e => {
+    e.preventDefault();
+    this.props.history.push("/itemList");
+  }
 }
 
 const mapStateToProps = state => ({

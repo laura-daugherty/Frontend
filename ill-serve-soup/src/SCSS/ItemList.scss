@@ -29,29 +29,34 @@
   margin: 20px;
   width: 200px;
   height: 280px;
+  &:hover {
+    @include button-reset;
+    text-align: center;
+    cursor: pointer;
+    @include body-font;
+    color: darken($color-three, 20%);
+    border: 2px solid #6CB043;
+    background-color: lighten($color-one, 10%);
+    font-size: 4rem;
+  }
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+    @include button-reset;
+    text-align: center;
+    cursor: pointer;
+    @include body-font;
+    color: darken($color-three, 20%);
+    border-radius: 5px;
+    font-size: 4rem;
+    background-color: darken($color-two, 10%);
+  }
+  .Link {
+    text-decoration: none;
+    color: inherit;
+  }
 }
-.add-link-div:hover {
-  @include button-reset;
-  text-align: center;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border: 2px solid #6CB043;
-  background-color: lighten($color-one, 10%);
-  font-size: 4rem;
-}
-.add-link-div:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
-  @include button-reset;
-  text-align: center;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 4rem;
-  background-color: darken($color-two, 10%);
-}
+
 
 .notification-banner {
   width: 100%;
