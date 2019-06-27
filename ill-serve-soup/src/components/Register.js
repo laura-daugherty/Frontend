@@ -14,37 +14,49 @@ class Register extends React.Component {
  }
   render() {
     return (
-      <div className="login-wrapper">
-        <form>
-          <img src="" alt="Logo" />
-          <div>
-            <input
-              placeholder="username"
-              name="username"
-              value={this.state.creds.username}
-              onChange={this.handleChanges}
-              required
-            />
+      <div className="login-bg">
+        <div className="login-wrapper">
+          {this.props.error 
+              ? (
+                <div className="axios-error">
+                  Error Logging In
+                </div> 
+              ) 
+              : (
+                <div className="axios-alert">
+                  Enter Your Information
+                </div>
+              ) 
+            }
+          <div className="form-button-wrapper">
+            <form className="login-form">
+              <div className="input-wrapper">
+                <div>
+                  <input
+                    placeholder="username"
+                    name="username"
+                    value={this.state.creds.username}
+                    onChange={this.handleChanges}
+                    required
+                  />
+                </div>
+                <div>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    name="password"
+                    value={this.state.creds.password}
+                    onChange={this.handleChanges}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="login-div" onClick={this.register}>
+                {(this.props.registering || this.props.loggingIn) ? <div >Building Your Kitchen...</div> : <p>Sign Up</p>}
+              </div>
+            </form>
           </div>
-          <div>
-            <input
-              type="password"
-              placeholder="password"
-              name="password"
-              value={this.state.creds.password}
-              onChange={this.handleChanges}
-              required
-            />
-            {this.props.error && <div>NO GOOD</div>}
-          </div>
-          <div>
-            <div className="login-button" onClick={this.register}>
-
-              {/* Not sure if we still need this  */}
-              {this.props.registering || this.props.loggingIn ? <div>PROCESSING</div> : <h3>GO</h3>}
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     );
   }

@@ -50,16 +50,14 @@ class Login extends React.Component {
                   />
                 </div>
               </div>
-              <div>
-                <button className="login-button" onClick={this.login}>
-                  {this.props.loggingIn === true ? (
-                    <div>
-                      Logging In...
-                    </div>
-                  ) : (
-                    <p>Log In</p>
-                  )}
-                </button>
+              <div className="login-div" onClick={this.login}>
+                {this.props.loggingIn === true ? (
+                  <div>
+                    Logging In...
+                  </div>
+                ) : (
+                  <p>Log In</p>
+                )}
               </div>
             </form>
           </div>
