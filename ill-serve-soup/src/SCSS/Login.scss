@@ -1,7 +1,6 @@
 @import './variables.scss';
 
 .login-bg {
-  // background-image: "./src/Images/bowl-bread-container-1707269.jpg";
   background-color: $color-two;
   display: flex;
   justify-content: center;
@@ -12,8 +11,7 @@
     flex-flow: column;
     justify-content: space-between;
     align-items:center;
-    height: 400px;
-    width: 400px;
+    @include form-card;
     background-color: $color-one;
     border: 2px solid $color-three;
     border-radius: 8px;
@@ -32,184 +30,35 @@
   align-content: flex-end;
 }
 .axios-error {
-  @include header-font;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 100px;
-  padding: 20px, 10px;
-  font-size: 1.5rem;
-  text-align: center;
+  @include axios;
   background-color: darken($color-error, 10%);
-  color: $color-one;
 }
 .axios-alert {
-  @include header-font;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
-  height: 100px;
-  padding: 20px, 10px;
-  font-size: 1.5rem;
-  text-align: center;
+  @include axios;
   background-color: darken($color-three, 5%);
-  color: $color-one;
 }
-
-
 
 .login-div {
-  @include button-reset;
   text-align: center;
-  background-color: darken($color-two, 10%);
+  background-color: $color-link-bg;
   width: 70%;
   cursor: pointer;
-  @include body-font;
-  color: darken($color-three, 20%);
-  border-radius: 5px;
+  color: $color-link-text;
+  border-radius: $button-border-radius;
   font-size: 1.2rem;
   &:hover {
-    @include button-reset;
-    text-align: center;
-    width: 70%;
-    cursor: pointer;
-    @include body-font;
-    color: darken($color-three, 20%);
-    border-radius: 5px;
-    font-size: 1.2rem;
-    background-color: lighten($color-one, 10%);
+    background-color: $color-link-light;
   }
   &:active {
-    transform: translateY(1px);
-    filter: saturate(150%);
-    @include button-reset;
-    text-align: center;
-    width: 70%;
-    cursor: pointer;
-    @include body-font;
-    color: inherit;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    background-color: darken($color-two, 10%);
+    @include active-button;
   }
 }
 
-.logging-div {
-    transform: translateY(1px);
-    filter: saturate(150%);
-    @include button-reset;
-    text-align: center;
-    width: 70%;
-    cursor: pointer;
-    @include body-font;
-    color: inherit;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    background-color: lighten($color-one, 10%);
-}
+
 .input-wrapper {
   display: flex;
   flex-flow: column;
   height: 100px;
   justify-content: space-evenly;
-  input {
-      padding: 0;
-      border: none;
-      font: inherit;
-      color: inherit;
-      background-color: lighten($color-one, 10%);
-  }
 }
 
-
-////ITEM FORM
-
-.item-bg {
-  // background-image: "./src/Images/bowl-bread-container-1707269.jpg";
-  background-color: $color-two;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: -webkit-fill-available;
-  .item-wrapper {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    align-items:center;
-    height: 400px;
-    width: 400px;
-    background-color: $color-one;
-    border: 2px solid $color-three;
-    border-radius: 8px;
-    .item-form {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      height: 400px;
-      justify-content: space-evenly;
-    }
-  }
-}
-.item-input-wrapper {
-  display: flex;
-  flex-flow: column;
-  height: 200px;
-  justify-content: space-evenly;
-  input {
-      padding: 0;
-      border: none;
-      font: inherit;
-      color: inherit;
-      background-color: lighten($color-one, 10%);
-  }
-}
-
-.item-button-wrapper {
-  display: flex;
-  flex-flow: column;
-  height: 150px;
-  justify-content: space-evenly;
-  align-items: center;
-  .Link {
-    text-decoration: none;
-    font-size: 1rem;
-  }
-}
-
-.item-form-button {
-  @include button-reset;
-  text-align: center;
-  background-color: darken($color-two, 10%);
-  width: 200px;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  margin: 5px;
-  padding: 5px;
-}
-.item-form-button:hover {
-  @include button-reset;
-  text-align: center;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: lighten($color-one, 10%);
-}
-.item-form-button:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
-  @include button-reset;
-  text-align: center;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: darken($color-two, 10%);
-}

@@ -1,12 +1,12 @@
 @import './variables.scss';
 
 .App-header {
-  width: 100%;
   display: flex;
+  justify-content: space-between;
   background-color: $color-three;
   @include header-font;
-  justify-content: space-between;
-  
+  width: 100%;
+
   .logo {
     display: flex;
     flex-wrap: nowrap;
@@ -34,7 +34,7 @@
       cursor: pointer;
 
       &:hover {
-        color: white;
+        color: $color-link-light;
       }
     }
 

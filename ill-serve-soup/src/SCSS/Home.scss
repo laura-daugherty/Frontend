@@ -6,35 +6,30 @@
   flex-flow: column;
   justify-content: space-evenly;
   align-items:center;
-  height: 400px;
-  width: 400px;
+  @include form-card;
   background-color: $color-one;
   border: 2px solid $color-three;
 }
 
 .home-login-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @include button-reset;
-  text-decoration: none;
-  background-color: darken($color-two, 10%);
+  @include flex-row-center;
+  @include link-reset;
+  background-color: $color-link-bg;
   width: 60%;
   height: 15%;
   padding: 10px;
   cursor: pointer;
   @include body-font;
   color: $color-link-text;
-  border-radius: 5px;
+  border-radius: $button-border-radius;
   &:hover {
-    background-color: lighten($color-one, 10%);
+    background-color: $color-link-light;
   }
   &:active {
-    transform: translateY(1px);
-    filter: saturate(150%);
+    @include active-button;
   }
   .Link {
-    text-decoration: none;
+    @include link-reset;
     color: inherit;
     padding: 20px;
     font-size: 1.2rem;
