@@ -32,6 +32,7 @@ class ItemList extends React.Component {
       <div>
         <div className="notification-banner">
           <Notifications searchByName={this.searchByName} items={this.props.items}/>
+          {this.props.fetchingItems && <div className="low-stock">Checking Pantry...</div>}
         </div>
         <div className="menu-item-wrap">
           <div className="sideMenu-wrap">
@@ -41,8 +42,7 @@ class ItemList extends React.Component {
           <div className="add-link-div">
             <Link className="Link" to='/itemForm'>+</Link>
           </div>
-            {this.props.fetchingItems && <div className="loader">Checking Pantry...</div>}
-            {this.props.items.length === 0 && <div className="no-items">Your Pantry is empty! Add an item to get started.</div>} 
+            {this.props.items.length === 0 && <div className="no-items">Your pantry is empty! Add an item to get started.</div>} 
             {displayItems.length > 0 && displayItems.map(item => 
               <Item history={this.props.history} item={item} key={item.itemid}/>)}
           </div>

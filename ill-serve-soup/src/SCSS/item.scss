@@ -1,39 +1,5 @@
 @import './variables.scss';
 
-.item-button {
-  @include button-reset;
-  text-align: center;
-  background-color: darken($color-two, 10%);
-  width: 100px;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  margin: 5px;
-}
-.item-button:hover {
-  @include button-reset;
-  text-align: center;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: lighten($color-one, 10%);
-}
-.item-button:active {
-  transform: translateY(1px);
-  filter: saturate(150%);
-  @include button-reset;
-  text-align: center;
-  cursor: pointer;
-  @include body-font;
-  color: inherit;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: darken($color-two, 10%);
-}
 
 .item-card {
   display: flex;
@@ -41,19 +7,42 @@
   align-items: center;
   background-color: lighten($color-three, 10%);
   margin: 20px;
-  border-radius: 5px;
+  border-radius: $button-border-radius;
   text-align: center;
   width: 200px;
   height: 280px;
   @include body-font;
-}
-.card-body {
-  text-align: center;
+  .card-body {
+    text-align: center;
+  }
+  .item-category {
+    border: 2px solid lighten($color-two, 10%);
+    color: lighten($color-two, 10%);
+    width: 140px;
+    margin: 20px auto;
+  }
 }
 
-.item-category {
-  border: 2px solid lighten($color-two, 10%);
-  color: lighten($color-two, 10%);
-  width: 140px;
-  margin: 20px auto;
+
+.item-button {
+  text-align: center;
+  background-color: $color-link-bg;
+  width: 100px;
+  cursor: pointer;
+  @include body-font;
+  color: $color-link-text;
+  border-radius: $button-border-radius;
+  font-size: 1.2rem;
+  margin: 5px;
+  &:hover {
+    background-color: $color-link-light;
+  }
+  &:active {
+    @include active-button
+  }
 }
+
+
+
+
+

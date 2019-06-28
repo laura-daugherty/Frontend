@@ -6,8 +6,7 @@
   flex-flow: column;
   justify-content: space-evenly;
   align-items:center;
-  height: 400px;
-  width: 400px;
+  @include form-card;
   background-color: $color-one;
   border: 2px solid $color-three;
 }

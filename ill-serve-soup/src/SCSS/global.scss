@@ -6,4 +6,10 @@ body {
   @include body-font;
   color: darken($color-three, 35%)
 }
-
+input {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: $color-link-light;
+}

@@ -9,27 +9,24 @@
   .sidemenu-btn {
     text-align: center;
     width: 80%;
-    background: darken($color-two, 10%);
-    border: 2px solid #6CB043;
-    border-radius: 5px;
-    color: darken($color-three, 20%);
+    background: $color-link-bg;
+    border: 2px solid $color-three;
+    border-radius: $button-border-radius;
+    color: $color-link-text;
     cursor: pointer;
     margin: 5px;
     padding: 3px;
 
     &:hover {
-      background: lighten($color-one, 10%);
-      color: darken($color-three, 20%);;
+      background: $color-link-light;
     }
     &:active {
-      transform: translateY(1px);
-      filter: saturate(150%);
-      background-color: darken($color-two, 10%);
+      @include active-button;
     }
   }
 
   .selected {
-    background: lighten($color-one, 10%);
+    background: $color-link-light;
     color: darken($color-three, 20%);
   }
  

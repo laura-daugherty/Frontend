@@ -7,6 +7,7 @@ $color-link-light: lighten($color-one, 10%);
 $color-link-bg: darken($color-two, 10%);
 $button-border-radius: 5px;
 
+
 @mixin header-font {
   font-family: 'Crete Round', serif;
 }
@@ -45,4 +46,22 @@ $button-border-radius: 5px;
 @mixin active-button {
   transform: translateY(1px);
   filter: saturate(150%);
+}
+
+@mixin form-card {
+  height: 400px;
+  width: 400px;
+}
+
+@mixin axios {
+  @include header-font;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 100px;
+  padding: 20px, 10px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: $color-one
 }
