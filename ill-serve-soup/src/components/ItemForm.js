@@ -24,9 +24,9 @@ class ItemForm extends React.Component {
             <form className="item-form" onSubmit={this.submitHandler}>
               <div className="item-input-wrapper">
                 <div>
+                  <div className='item-form-label'>Item name:</div>
                   <input
                     type='text'
-                    placeholder="Item Name"
                     name="itemname"
                     value={this.state.itemname}
                     onChange={this.handleChanges}
@@ -34,8 +34,9 @@ class ItemForm extends React.Component {
                   />
                 </div>
                 <div className="category-dropdown">
+                <div className='item-form-label'>Category:</div>
                   <select name='itemcategory' value={this.state.itemcategory} onChange={this.handleChanges} required>
-                    <option value='' disabled>Item Category</option>
+                    <option value='' disabled></option>
                     <option value='produce'>Produce</option>
                     <option value='meat'>Meat</option>
                     <option value='fish'>Fish</option>
@@ -49,10 +50,10 @@ class ItemForm extends React.Component {
                   </select>
                 </div>
                 <div>
+                <div className='item-form-label'>Quantity:</div>
                   <input
                     type='number'
                     min='0'
-                    placeholder="Item Quantity"
                     name="itemquantity"
                     value={this.state.itemquantity}
                     onChange={this.handleChanges}
@@ -60,9 +61,9 @@ class ItemForm extends React.Component {
                   />
                 </div>
                 <div>
+                  <div className='item-form-label'>Unit:</div>
                   <input
                     type='text'
-                    placeholder="Item Unit"
                     name="itemunit"
                     value={this.state.itemunit}
                     onChange={this.handleChanges}
@@ -70,10 +71,10 @@ class ItemForm extends React.Component {
                   />
                 </div>
                 <div>
+                  <div className='item-form-label'>Alert me when quantity is below:</div>
                   <input
                     type='number'
                     min='0'
-                    placeholder="Low Stock Threshold"
                     name="itemthreshold"
                     value={this.state.itemthreshold}
                     onChange={this.handleChanges}

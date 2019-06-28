@@ -41,7 +41,8 @@
 .login-div {
   text-align: center;
   background-color: $color-link-bg;
-  width: 70%;
+  width: 150px;
+  padding: 8px 5px;
   cursor: pointer;
   color: $color-link-text;
   border-radius: $button-border-radius;
@@ -60,5 +61,12 @@
   flex-flow: column;
   height: 100px;
   justify-content: space-evenly;
+
+  input {
+    padding: 8px;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    outline-color: $color-three;
+  }
 }
 
