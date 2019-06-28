@@ -50,13 +50,7 @@ class Login extends React.Component {
                 </div>
               </div>
               <div className="login-div" onClick={this.login}>
-                {this.props.loggingIn === true ? (
-                  <div className="logging-div">
-                    Logging In...
-                  </div>
-                ) : (
-                  <p>Log In</p>
-                )}
+                {this.props.loggingIn === true ? 'Logging In...' : 'Log In'}
               </div>
             </form>
           </div>

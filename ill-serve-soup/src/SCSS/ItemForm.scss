@@ -7,16 +7,17 @@
     display: flex;
     flex-flow: column;
     justify-content: space-between;
-    align-items:center;
-    @include form-card;
+    align-items: center;
+    width: 450px;
     background-color: $color-one;
     border: 2px solid $color-three;
     border-radius: 8px;
+    padding: 20px 0 0 0;
+
     .item-form {
       display: flex;
       flex-flow: column;
       align-items: center;
-      height: 400px;
       justify-content: space-evenly;
     }
   }
@@ -24,19 +25,34 @@
 .item-input-wrapper {
   display: flex;
   flex-flow: column;
-  height: 200px;
   justify-content: space-evenly;
+
   input {
-      background-color: $color-link-light;
+    background-color: $color-link-light;
+    width: 230px;
+    padding: 2px 5px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    outline-color: $color-three;
+  }
+
+  select {
+    width: 238px;
+    border: none;
+    font-size: 1.1rem;
+    padding: 2px 5px;
+    outline-color: $color-three;
+    margin-bottom: 15px;
   }
 }
 
 .item-button-wrapper {
   display: flex;
   flex-flow: column;
-  height: 150px;
   justify-content: space-evenly;
   align-items: center;
+  margin: 10px 0;
+
   .Link {
     @include link-reset;
   }
@@ -50,8 +66,10 @@
   color: $color-link-text;
   border-radius: $button-border-radius;
   font-size: 1.2rem;
-  margin: 5px;
   padding: 5px;
+  border: none;
+  margin-bottom: 20px;
+
   &:hover {
     background-color: $color-link-light;
   }
