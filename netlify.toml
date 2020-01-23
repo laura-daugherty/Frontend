@@ -1,6 +1,6 @@
 [build]
-base = "ill-serve-soup/"
-publish = "ill-serve-soup/build/"
+base = "ill-serve-soup"
+publish = "/build"
 command = "yarn build"
 
 [[redirects]]
